@@ -1,0 +1,40 @@
+Miguel Fernández | Junior Data Scientist
+miguel.fernandez@gmail.com | Lima, Peru
+
+ABOUT ME
+Recent graduate passionate about machine learning and data analysis.
+Self-taught Python programmer. Completed several online courses and
+built personal projects. Looking for first professional data science role.
+
+EDUCATION
+B.Sc. Industrial Engineering — Pontificia Universidad Católica del Perú (2023)
+GPA: 3.7/4.0
+
+ONLINE COURSES & CERTIFICATIONS
+- Machine Learning Specialization — Andrew Ng / Coursera (2023)
+- Deep Learning Specialization — deeplearning.ai (2023)
+- Python for Data Science — IBM / Coursera (2022)
+- SQL for Data Analysis — Udacity (2022)
+
+PERSONAL PROJECTS
+
+Sentiment Analysis on Twitter (2023)
+- Fine-tuned BERT model for Peruvian Spanish tweets
+- Python, HuggingFace Transformers, PyTorch
+- Accuracy: 88% on test set
+
+House Price Prediction — Kaggle (2023)
+- XGBoost + feature engineering; top 22% leaderboard
+- Exploratory data analysis, missing value imputation, encoding
+
+Movie Recommendation System (2022)
+- Collaborative filtering with Surprise library (SVD algorithm)
+- Dataset: MovieLens 100K
+
+SKILLS
+Python (Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn)
+PyTorch, HuggingFace Transformers (beginner-intermediate)
+SQL (intermediate), Git, Jupyter Notebook
+XGBoost, LightGBM (Kaggle experience)
+
+LANGUAGES: Spanish (native), English (B2)

@@ -1,0 +1,33 @@
+Ana García | Data Engineer
+ana.garcia@email.com | Barcelona, Spain
+
+SUMMARY
+Data Engineer with 5 years building data pipelines and warehouses.
+Strong Python and SQL skills. Experience with Spark, Airflow and dbt.
+Familiar with ML model deployment and feature engineering for DS teams.
+
+EXPERIENCE
+
+Glovo — Data Engineer (2022-Present)
+- Built and maintained ETL pipelines processing 2TB/day (Apache Spark + Airflow)
+- Designed data warehouse schema on BigQuery; reduced query costs 40%
+- Implemented dbt models for business metrics; 60+ models in production
+- Created feature store for ML team using Feast + Redis
+- Python-based data quality framework with Great Expectations
+
+Adevinta — Junior Data Engineer (2019-2022)
+- Python scripts for data ingestion from 10+ APIs into PostgreSQL
+- Apache Kafka for real-time event streaming
+- Automated data validation and alerting (PagerDuty)
+
+SKILLS
+Python, SQL, Apache Spark, Apache Kafka, Airflow, dbt, BigQuery,
+PostgreSQL, Redis, Docker, Kubernetes, GCP, AWS, Feast, Git,
+Great Expectations, Terraform
+
+ML adjacent: feature engineering, model deployment support, MLflow
+
+EDUCATION
+B.Sc. Computer Engineering — Universitat Politecnica de Catalunya (2019)
+
+LANGUAGES: Spanish (native), English (C1), Catalan (native)

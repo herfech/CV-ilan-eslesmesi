@@ -1,0 +1,21 @@
+venv\Scripts\activatestreamlit run app.py# CV-İlan Eşleşmesi – Python Bağımlılıkları
+# Kurulum: pip install -r requirements.txt
+
+# ── Web Arayüzü ──────────────────────────
+streamlit>=1.35.0
+
+# ── NLP & ML ─────────────────────────────
+scikit-learn>=1.4.0
+nltk>=3.8.0
+numpy>=1.26.0
+
+# ── Veri İşleme ──────────────────────────
+pandas>=2.0.0
+
+# ── Görselleştirme ───────────────────────
+plotly>=5.18.0
+
+# ── Derin Anlam Analizi (Opsiyonel) ──────
+# Yorum satırını kaldırarak aktifleştir:
+# sentence-transformers>=2.7.0
+# torch>=2.2.0

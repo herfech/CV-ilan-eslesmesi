@@ -1,0 +1,33 @@
+# ── Sanal ortam ──────────────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── Python önbellek ──────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# ── Jupyter ──────────────────────────────────────────────────
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── Notebook grafikleri ───────────────────────────────────────
+notebooks/plots/
+
+# ── Streamlit önbellek ───────────────────────────────────────
+.streamlit/cache/
+
+# ── Sistem dosyaları ─────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── VS Code ──────────────────────────────────────────────────
+.vscode/
+
+# ── Ortam değişkenleri ───────────────────────────────────────
+.env
+*.env
