@@ -1,0 +1,17 @@
+Model,5 Benzer Belge,Cosine Skorları,Ortalama
+lemmatized_cbow_win2_dim300,"cv_136, cv_234, cv_004, cv_074, cv_154","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9999
+lemmatized_cbow_win4_dim300,"cv_234, cv_136, cv_226, cv_096, cv_154","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9998
+stemmed_cbow_win2_dim300,"cv_011, cv_121, cv_044, cv_074, cv_004","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9998
+lemmatized_cbow_win2_dim100,"cv_136, cv_234, cv_096, cv_146, cv_226","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9997
+stemmed_cbow_win2_dim100,"cv_011, cv_121, cv_073, cv_100, cv_211","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9997
+stemmed_cbow_win4_dim300,"cv_011, cv_073, cv_121, cv_154, cv_234","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9997
+lemmatized_cbow_win4_dim100,"cv_136, cv_096, cv_226, cv_196, cv_176","[1.0, 1.0, 1.0, 1.0, 1.0]",0.9996
+stemmed_cbow_win4_dim100,"cv_011, cv_121, cv_073, cv_211, cv_234","[1.0, 1.0, 1.0, 0.999, 0.999]",0.9995
+stemmed_skipgram_win2_dim300,"cv_011, cv_121, cv_211, cv_131, cv_061","[1.0, 0.999, 0.999, 0.997, 0.996]",0.9983
+lemmatized_skipgram_win2_dim300,"cv_121, cv_011, cv_211, cv_172, cv_140","[0.999, 0.999, 0.999, 0.997, 0.997]",0.998
+stemmed_skipgram_win2_dim100,"cv_011, cv_121, cv_211, cv_131, cv_061","[1.0, 1.0, 0.999, 0.996, 0.995]",0.9978
+lemmatized_skipgram_win2_dim100,"cv_121, cv_011, cv_211, cv_172, cv_031","[0.999, 0.999, 0.999, 0.996, 0.995]",0.9975
+stemmed_skipgram_win4_dim300,"cv_011, cv_121, cv_211, cv_031, cv_201","[0.999, 0.999, 0.999, 0.992, 0.99]",0.9957
+lemmatized_skipgram_win4_dim300,"cv_011, cv_121, cv_211, cv_031, cv_061","[0.999, 0.999, 0.999, 0.992, 0.989]",0.9956
+stemmed_skipgram_win4_dim100,"cv_011, cv_121, cv_211, cv_031, cv_201","[0.999, 0.999, 0.998, 0.991, 0.989]",0.9952
+lemmatized_skipgram_win4_dim100,"cv_011, cv_121, cv_211, cv_031, cv_201","[0.999, 0.999, 0.999, 0.993, 0.987]",0.9951

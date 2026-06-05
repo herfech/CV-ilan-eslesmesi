@@ -1,0 +1,17 @@
+Model,5 Benzer Belge,Anlamsal Puanlar (1-5),Ortalama Puan
+stemmed_skipgram_win2_dim300,"cv_011, cv_121, cv_211, cv_131, cv_061","[5, 5, 5, 5, 4]",4.8
+stemmed_skipgram_win4_dim300,"cv_011, cv_121, cv_211, cv_031, cv_201","[5, 5, 4, 5, 5]",4.8
+lemmatized_skipgram_win4_dim100,"cv_011, cv_121, cv_211, cv_031, cv_201","[4, 5, 5, 4, 5]",4.6
+lemmatized_skipgram_win4_dim300,"cv_011, cv_121, cv_211, cv_031, cv_061","[4, 5, 4, 5, 5]",4.6
+stemmed_skipgram_win2_dim100,"cv_011, cv_121, cv_211, cv_131, cv_061","[4, 5, 4, 5, 5]",4.6
+stemmed_skipgram_win4_dim100,"cv_011, cv_121, cv_211, cv_031, cv_201","[5, 4, 4, 5, 4]",4.4
+lemmatized_skipgram_win2_dim100,"cv_121, cv_011, cv_211, cv_172, cv_031","[4, 5, 4, 1, 5]",3.8
+stemmed_cbow_win4_dim100,"cv_011, cv_121, cv_073, cv_211, cv_234","[5, 5, 2, 5, 2]",3.8
+stemmed_cbow_win2_dim100,"cv_011, cv_121, cv_073, cv_100, cv_211","[5, 5, 1, 2, 5]",3.6
+lemmatized_skipgram_win2_dim300,"cv_121, cv_011, cv_211, cv_172, cv_140","[4, 4, 5, 2, 2]",3.4
+stemmed_cbow_win2_dim300,"cv_011, cv_121, cv_044, cv_074, cv_004","[5, 4, 2, 2, 3]",3.2
+stemmed_cbow_win4_dim300,"cv_011, cv_073, cv_121, cv_154, cv_234","[5, 2, 4, 3, 2]",3.2
+lemmatized_cbow_win2_dim300,"cv_136, cv_234, cv_004, cv_074, cv_154","[1, 3, 2, 3, 3]",2.4
+lemmatized_cbow_win4_dim300,"cv_234, cv_136, cv_226, cv_096, cv_154","[3, 1, 1, 2, 2]",1.8
+lemmatized_cbow_win2_dim100,"cv_136, cv_234, cv_096, cv_146, cv_226","[1, 2, 2, 1, 1]",1.4
+lemmatized_cbow_win4_dim100,"cv_136, cv_096, cv_226, cv_196, cv_176","[2, 1, 1, 1, 1]",1.2
