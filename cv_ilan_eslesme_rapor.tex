@@ -1,11 +1,11 @@
-% ╔══════════════════════════════════════════════════╗
-% ║  CV – İlan Eşleşmesi: Teknik Rapor              ║
-% ║  Dil: Türkçe  |  Derleyici: pdflatex (Overleaf) ║
-% ╚══════════════════════════════════════════════════╝
+% ╔══════════════════════════════════════════════════════════╗
+% ║  CV – İlan Eşleşmesi: Final Ödev-2 Raporu               ║
+% ║  Doğal Dil İşleme | Gümüşhane Üniversitesi              ║
+% ║  Derleyici: pdflatex (Overleaf)                         ║
+% ╚══════════════════════════════════════════════════════════╝
 
 \documentclass[12pt, a4paper]{article}
 
-% ── Temel Paketler ───────────────────────────────────────────
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[turkish]{babel}
@@ -26,500 +26,441 @@
 \usepackage{mdframed}
 \usepackage{lmodern}
 \usepackage{microtype}
+\usepackage{longtable}
+\usepackage{multirow}
 
-% ── Sayfa Düzeni ─────────────────────────────────────────────
-\geometry{
-    top=2.5cm, bottom=2.5cm,
-    left=2.5cm, right=2.5cm,
-    headheight=15pt
-}
+\geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headheight=15pt}
 
-% ── Renkler ──────────────────────────────────────────────────
-\definecolor{anarenk}{RGB}{233,69,96}
+\definecolor{anarenk}{RGB}{180,10,40}
 \definecolor{morrenk}{RGB}{99,102,241}
-\definecolor{yesilenk}{RGB}{74,222,128}
-\definecolor{grirenk}{RGB}{160,174,192}
+\definecolor{yesil}{RGB}{74,222,128}
+\definecolor{gri}{RGB}{120,130,140}
 \definecolor{kodbg}{RGB}{26,31,46}
 \definecolor{turuncu}{RGB}{245,158,11}
+\definecolor{acikgri}{RGB}{245,245,245}
 
-% ── Bağlantılar ──────────────────────────────────────────────
 \hypersetup{
-    colorlinks=true,
-    linkcolor=anarenk,
-    urlcolor=morrenk,
-    citecolor=morrenk,
-    pdftitle={CV – İlan Eşleşmesi: Teknik Rapor},
-    pdfsubject={İnsan Kaynakları, NLP, Makine Öğrenmesi}
+    colorlinks=true, linkcolor=anarenk,
+    urlcolor=morrenk, citecolor=morrenk,
+    pdftitle={CV-İlan Eşleşmesi: Final Ödev-2},
 }
 
-% ── Kod Stili ────────────────────────────────────────────────
 \lstdefinestyle{kod}{
-    basicstyle=\ttfamily\small,
-    keywordstyle=\color{morrenk}\bfseries,
-    stringstyle=\color{yesilenk},
-    commentstyle=\color{grirenk}\itshape,
-    numberstyle=\tiny\color{grirenk},
-    numbers=left,
-    numbersep=8pt,
-    backgroundcolor=\color{kodbg},
-    frame=single,
-    framerule=0.4pt,
-    rulecolor=\color{grirenk},
-    breaklines=true,
-    tabsize=4,
-    showstringspaces=false,
-    xleftmargin=12pt,
     basicstyle=\ttfamily\small\color{white},
+    keywordstyle=\color{morrenk}\bfseries,
+    stringstyle=\color{yesil},
+    commentstyle=\color{gri}\itshape,
+    numberstyle=\tiny\color{gri},
+    numbers=left, numbersep=8pt,
+    backgroundcolor=\color{kodbg},
+    frame=single, framerule=0.4pt,
+    rulecolor=\color{gri},
+    breaklines=true, tabsize=4,
+    showstringspaces=false, xleftmargin=12pt,
 }
 
-% ── Bilgi Kutusu (mdframed ile — güvenli) ────────────────────
-\mdfdefinestyle{bilgikutsu}{
-    linecolor=anarenk,
-    linewidth=1.5pt,
-    backgroundcolor=kodbg,
-    fontcolor=white,
-    innertopmargin=8pt,
-    innerbottommargin=8pt,
-    innerleftmargin=10pt,
-    innerrightmargin=10pt,
+\mdfdefinestyle{bilgi}{
+    linecolor=anarenk, linewidth=1.5pt,
+    backgroundcolor=acikgri,
+    innertopmargin=8pt, innerbottommargin=8pt,
+    innerleftmargin=10pt, innerrightmargin=10pt,
     roundcorner=4pt
 }
 
-% ── Başlık Stilleri ──────────────────────────────────────────
-\titleformat{\section}
-    {\Large\bfseries\color{anarenk}}
-    {\thesection}{1em}{}[\color{anarenk}\titlerule]
+\titleformat{\section}{\Large\bfseries\color{anarenk}}{\thesection}{1em}{}[\color{anarenk}\titlerule]
+\titleformat{\subsection}{\large\bfseries\color{morrenk}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
-\titleformat{\subsection}
-    {\large\bfseries\color{morrenk}}
-    {\thesubsection}{1em}{}
-
-\titleformat{\subsubsection}
-    {\normalsize\bfseries}
-    {\thesubsubsection}{1em}{}
-
-% ── Üstbilgi / Altbilgi ──────────────────────────────────────
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{grirenk}CV -- İlan Eşleşmesi}
-\fancyhead[R]{\small\color{grirenk}İnsan Kaynakları $\cdot$ NLP}
-\fancyfoot[C]{\small\color{grirenk}\thepage}
+\fancyhead[L]{\small\color{gri}CV -- İlan Eşleşmesi | Proje [50]}
+\fancyhead[R]{\small\color{gri}Doğal Dil İşleme $\cdot$ 2025--2026}
+\fancyfoot[C]{\small\color{gri}\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 
 % ─────────────────────────────────────────────────────────────
 \begin{document}
 % ─────────────────────────────────────────────────────────────
 
-% ── Kapak Sayfası ────────────────────────────────────────────
+% ── Kapak ────────────────────────────────────────────────────
 \begin{titlepage}
-    \centering
-    \vspace*{2cm}
+\thispagestyle{empty}
+\centering
 
-    {\Huge\bfseries\color{anarenk} CV -- İlan Eşleşmesi}\\[0.5cm]
-    {\Large\color{morrenk} İnsan Kaynakları Projesi: Teknik Rapor}\\[2cm]
+{\large\bfseries T.C.}\\[0.2cm]
+{\large\bfseries GÜMÜŞHANE ÜNİVERSİTESİ}\\[0.1cm]
+{\large\bfseries GÜMÜŞHANE MESLEK YÜKSEKOKULU}\\[0.1cm]
+{\large\bfseries BİLGİSAYAR TEKNOLOJİLERİ BÖLÜMÜ}\\[0.1cm]
+{\large\bfseries BİLGİSAYAR PROGRAMCILIĞI PROGRAMI}\\[0.8cm]
 
-    \begin{mdframed}[style=bilgikutsu]
-    \centering
-    \large\color{white}
-    \textbf{Proje Özeti}\\[0.4cm]
-    \normalsize\color{grirenk}
-    Bu rapor, aday CV'lerinin iş ilanlarıyla metinsel uyumunu\\
-    ölçen bir NLP sisteminin teknik belgesidir.\\[0.4cm]
-    \color{white}
-    \textbf{Yöntem:} TF-IDF Vektörleştirme + Kosinüs Benzerliği\\
-    \textbf{Arayüz:} Streamlit Dashboard\\
-    \textbf{Dil:} Python 3.11+
-    \end{mdframed}
+\includegraphics[width=4cm]{GU_LOGO.png}\\[0.8cm]
 
-    \vspace{2cm}
+{\color{anarenk}\rule{0.85\textwidth}{1.5pt}}\\[0.4cm]
 
-    \begin{tabular}{ll}
-        \toprule
-        \textbf{Proje Adı}     & CV -- İlan Eşleşmesi \\
-        \textbf{Alan}          & İnsan Kaynakları / NLP \\
-        \textbf{Teknolojiler}  & Python, Scikit-learn, Streamlit, Plotly \\
-        \textbf{Sürüm}         & v1.0 \\
-        \textbf{Tarih}         & \today \\
-        \bottomrule
-    \end{tabular}
+{\Large\bfseries\color{anarenk} FINAL ÖDEV-2}\\[0.2cm]
+{\Large\bfseries\color{anarenk} CV -- İLAN EŞLEŞMESİ}\\[0.2cm]
+{\large\bfseries\color{morrenk} Word2Vec Tabanlı Metin Benzerliği Hesaplama ve Değerlendirme}\\[0.2cm]
+{\normalsize\itshape Proje [50]: İnsan Kaynakları -- Aday CV'leri ile İş İlanlarının\\
+Metinsel Uyumunun Ölçülmesi}\\[0.3cm]
 
-    \vfill
-    {\small\color{grirenk} Bu rapor proje gelişimi boyunca güncellenecektir.}
+{\color{anarenk}\rule{0.85\textwidth}{1.5pt}}\\[0.8cm]
+
+{\large\bfseries PROJE EKİBİ:}\\[0.4cm]
+\begin{tabular}{rl}
+    1. & \textbf{Mario Enrique Motede Dasilva} \\
+       & \small(Grup Sözcüsü / Veritabanı Mimarı) \\[0.2cm]
+    2. & \textbf{Heriberto Fernandez Chale} \\
+       & \small(Sistem Entegratörü / UI-UX Tasarımcı) \\[0.2cm]
+    3. & \textbf{Matias Fernando Ndong Owono Obiang} \\
+       & \small(Güvenlik Uzmanı / Hesap Yönetimi) \\[0.2cm]
+    4. & \textbf{Rodolfo Mba Ndong Mebaha} \\
+       & \small(Finansal Mantık ve Satış Yazılımcısı) \\
+\end{tabular}
+
+\vspace{0.8cm}
+\begin{tabular}{ll}
+    \textbf{Ders:}             & Doğal Dil İşleme \\[0.2cm]
+    \textbf{Öğretim Elemanı:}  & Dr. Rabia Yaşa Koştaş \\[0.2cm]
+    \textbf{GitHub:}           & \url{https://github.com/herfech/CV-ilan-eslesmesi} \\
+\end{tabular}
+
+\vfill
+{\color{anarenk}\bfseries 2025--2026 Bahar Dönemi}
 \end{titlepage}
 
-% ── İçindekiler ──────────────────────────────────────────────
 \tableofcontents
 \newpage
 
 % ─────────────────────────────────────────────────────────────
-\section{Giriş ve Motivasyon}
+\section{Giriş}
 % ─────────────────────────────────────────────────────────────
 
-\subsection{Problem Tanımı}
+\subsection{Ödevin Amacı}
 
-Günümüz iş dünyasında insan kaynakları departmanları, her iş ilanı için onlarca hatta yüzlerce CV değerlendirmek zorunda kalmaktadır. Bu süreç zaman alıcı, maliyetli ve tutarsız sonuçlar doğurabilmektedir. \textbf{CV -- İlan Eşleşmesi} projesi, bu sorunu doğal dil işleme (NLP) teknikleriyle çözmeyi amaçlamaktadır.
+Bu ödevin amacı, CV--İlan Eşleşmesi projesine ait veri seti üzerinde Word2Vec modelleri eğiterek metinler arası benzerlik hesaplamaları yapmak ve modellerin karşılaştırmalı başarımını değerlendirmektir. Ödev-1'de gerçekleştirilen metin ön işleme adımlarının çıktıları (lemmatized ve stemmed veri setleri) bu ödevde girdi olarak kullanılmıştır.
 
-\begin{mdframed}[style=bilgikutsu]
-\color{white}
-\textbf{Temel Problem:} Aday CV'lerinin iş ilanlarıyla \textbf{metinsel uyumunu otomatik olarak ölçmek} ve en uygun adayları sıralamak.
+\subsection{Veri Seti}
+
+\begin{mdframed}[style=bilgi]
+\textbf{CV--İlan Eşleşmesi Veri Seti}\\[0.3cm]
+\begin{tabular}{ll}
+Kaynak       & Proje [50] kapsamında özgün olarak oluşturulmuştur \\
+Toplam belge & 280 \\
+CV sayısı    & 250 (10 kategori, 25'er belge) \\
+İş ilanı     & 30 (10 kategori, 3'er seviye: Junior/Mid/Senior) \\
+Kategoriler  & Data Science, Software Engineering, Marketing, Finance, \\
+             & HR, Healthcare, Education, Sales, Project Management, Cybersecurity \\
+Format       & \texttt{document\_id} $|$ \texttt{content} \\
+\end{tabular}
 \end{mdframed}
 
-\subsection{Projenin Kapsamı}
-
-Bu proje şu bileşenleri kapsamaktadır:
-
-\begin{itemize}
-    \item \textbf{Metin Ön İşleme:} Unicode normalizasyonu, stopword eleme, noktalama temizleme
-    \item \textbf{Vektörleştirme:} TF-IDF (birincil) ve Sentence-Transformers (opsiyonel)
-    \item \textbf{Benzerlik Hesaplama:} Kosinüs Benzerliği formülü
-    \item \textbf{Sıralama:} Top-N aday çıktısı
-    \item \textbf{Görselleştirme:} Streamlit tabanlı interaktif dashboard
-\end{itemize}
-
-% ─────────────────────────────────────────────────────────────
-\section{Matematiksel Altyapı}
-% ─────────────────────────────────────────────────────────────
-
-\subsection{TF-IDF (Term Frequency -- Inverse Document Frequency)}
-
-TF-IDF, bir kelimenin belgede ne kadar önemli olduğunu ölçen istatistiksel bir yöntemdir.
-
-\subsubsection{Term Frequency (TF)}
-
-\begin{equation}
-    \text{TF}(t,\, d) = \frac{f_{t,d}}{\displaystyle\sum_{t' \in d} f_{t',d}}
-\end{equation}
-
-Burada $f_{t,d}$, $t$ teriminin $d$ belgesinde geçme sayısını ifade eder.
-
-\subsubsection{Inverse Document Frequency (IDF)}
-
-\begin{equation}
-    \text{IDF}(t,\, D) = \log \frac{|D|}{\left|\{d \in D : t \in d\}\right|}
-\end{equation}
-
-\subsubsection{TF-IDF Ağırlığı}
-
-\begin{equation}
-    \text{TF-IDF}(t,\, d,\, D) \;=\; \text{TF}(t,\, d) \;\times\; \text{IDF}(t,\, D)
-\end{equation}
-
-Bu projede \texttt{sublinear\_tf=True} parametresi kullanılarak log-ölçekli TF uygulanmaktadır:
-
-\begin{equation}
-    \text{TF}_{\log}(t,\, d) = 1 + \log(f_{t,d})
-\end{equation}
-
-\subsection{Kosinüs Benzerliği}
-
-İki metin vektörü $\mathbf{A}$ ve $\mathbf{B}$ arasındaki kosinüs benzerliği:
-
-\begin{equation}
-    \boxed{
-        \text{benzerlik}(\mathbf{A},\, \mathbf{B})
-        \;=\;
-        \cos(\theta)
-        \;=\;
-        \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \cdot \|\mathbf{B}\|}
-        \;=\;
-        \frac{\displaystyle\sum_{i=1}^{n} A_i B_i}
-             {\displaystyle\sqrt{\sum_{i=1}^{n} A_i^2}
-              \;\cdot\;
-              \sqrt{\sum_{i=1}^{n} B_i^2}}
-    }
-\end{equation}
-
-\begin{itemize}
-    \item Sonuç aralığı: $[0,\; 1]$
-    \item $\cos(\theta) \to 1$ \;$\Rightarrow$\; tam uyum
-    \item $\cos(\theta) \to 0$ \;$\Rightarrow$\; uyumsuzluk
-\end{itemize}
-
-\subsection{Skor Yorumlama Tablosu}
+\subsection{Ham Veri vs Ön İşlenmiş Veri Karşılaştırması}
 
 \begin{table}[H]
 \centering
-\caption{Kosinüs Benzerlik Skoru Yorumlama Rehberi}
-\begin{tabular}{ccc}
+\caption{Ham Veri ve Ön İşlenmiş Veri Yapısal Karşılaştırması}
+\begin{tabular}{lccc}
 \toprule
-\textbf{Skor Aralığı} & \textbf{Değerlendirme} & \textbf{Öneri} \\
+\textbf{Özellik} & \textbf{Ham Veri} & \textbf{Lemmatized} & \textbf{Stemmed} \\
 \midrule
-$0{,}60 \leq s \leq 1{,}00$ & {\color{yesilenk}Yüksek Uyum}  & Mülakat çağrısı \\
-$0{,}35 \leq s < 0{,}60$    & {\color{turuncu}Orta Uyum}     & Detaylı inceleme \\
-$0{,}00 \leq s < 0{,}35$    & {\color{red}Düşük Uyum}        & Elenebilir \\
+Belge sayısı    & 280    & 280    & 280    \\
+Ort. kelime/belge & 105  & 68     & 65     \\
+Stopword        & Var    & Yok    & Yok    \\
+Büyük/küçük harf & Karma & Küçük  & Küçük  \\
+Kelime formu    & Orijinal & Sözlük kökü & Kök/gövde \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+\subsection{GitHub Reposu}
+
+Tüm kodlar, modeller ve veri setleri GitHub reposunda mevcuttur:\\
+\url{https://github.com/herfech/CV-ilan-eslesmesi}
+
+Modeller boyut nedeniyle GitHub'a yüklenememiş ise Google Drive linki:\\
+(Modeller \texttt{models/} klasöründe \texttt{.model} uzantılı olarak mevcuttur)
+
 % ─────────────────────────────────────────────────────────────
-\section{Sistem Mimarisi}
+\section{Yöntem}
 % ─────────────────────────────────────────────────────────────
 
-\subsection{Dosya Yapısı}
+\subsection{Word2Vec Vektörleştirme Detayları}
 
-\begin{lstlisting}[style=kod, language={}, caption={Proje Klasör Yapısı}]
-CV_MATCHING/
-|-- app.py                           # Streamlit ana uygulamasi
-|-- matching_engine.py               # NLP motoru
-|-- sample_data.py                   # Ornek veriler
-|-- test_matching.py                 # Terminal testi
-|-- requirements.txt                 # Bagimliliklar
-|-- Dockerfile                       # Docker imaji
-|-- docker-compose.yml               # Docker Compose
-|-- notebooks/
-|   |-- 01_eda_ve_onisleme.ipynb     # Keşifsel analiz
-|   |-- 02_model_karsilastirma.ipynb # Model karsilastirmasi
-|-- rapor/
-|   |-- cv_ilan_eslesme_rapor.tex    # Bu rapor (LaTeX)
-|-- cvs_ornek/
-    |-- aday1_cv.txt
-    |-- aday2_cv.txt
-\end{lstlisting}
-
-\subsection{Bileşen Açıklamaları}
+Gensim kütüphanesi kullanılarak aşağıdaki 8 parametre seti ile hem lemmatized hem de stemmed veri setleri için toplamda \textbf{16 Word2Vec modeli} eğitilmiştir.
 
 \begin{table}[H]
 \centering
-\caption{Proje Dosyaları ve Görevleri}
-\begin{tabular}{lp{9cm}}
+\caption{Word2Vec Model Parametreleri}
+\begin{tabular}{ccccc}
 \toprule
-\textbf{Dosya} & \textbf{Açıklama} \\
+\textbf{No} & \textbf{Veri Seti} & \textbf{Model Tipi} & \textbf{Window} & \textbf{Vector Size} \\
 \midrule
-\texttt{app.py}             & Streamlit arayüzü -- tarayıcıda açılan dashboard \\
-\texttt{matching\_engine.py}& Metin ön işleme, TF-IDF, Cosine Similarity mantığı \\
-\texttt{sample\_data.py}    & 5 örnek CV ve 1 örnek iş ilanı \\
-\texttt{test\_matching.py}  & Streamlit olmadan terminalde hızlı test \\
-\texttt{requirements.txt}   & Python bağımlılık listesi \\
-\texttt{Dockerfile}         & Docker konteyner imajı \\
-\texttt{notebooks/01\_*}    & EDA ve ön işleme adımları \\
-\texttt{notebooks/02\_*}    & TF-IDF -- Sentence-Transformers karşılaştırması \\
+1  & lemmatized & CBOW     & 2 & 100 \\
+2  & lemmatized & Skip-gram & 2 & 100 \\
+3  & lemmatized & CBOW     & 4 & 100 \\
+4  & lemmatized & Skip-gram & 4 & 100 \\
+5  & lemmatized & CBOW     & 2 & 300 \\
+6  & lemmatized & Skip-gram & 2 & 300 \\
+7  & lemmatized & CBOW     & 4 & 300 \\
+8  & lemmatized & Skip-gram & 4 & 300 \\
+\midrule
+9  & stemmed & CBOW     & 2 & 100 \\
+10 & stemmed & Skip-gram & 2 & 100 \\
+11 & stemmed & CBOW     & 4 & 100 \\
+12 & stemmed & Skip-gram & 4 & 100 \\
+13 & stemmed & CBOW     & 2 & 300 \\
+14 & stemmed & Skip-gram & 2 & 300 \\
+15 & stemmed & CBOW     & 4 & 300 \\
+16 & stemmed & Skip-gram & 4 & 300 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Metin İşleme Pipeline'ı}
+\textbf{Ortak parametreler:} \texttt{min\_count=2}, \texttt{epochs=10}, \texttt{workers=4}, \texttt{seed=42}
 
-Ham metin aşağıdaki 6 adımdan geçirilir:
+\textbf{İsimlendirme formatı:}
+\begin{lstlisting}[style=kod, language={}]
+word2vec_lemmatized_cbow_win2_dim100.model
+word2vec_lemmatized_skipgram_win4_dim300.model
+word2vec_stemmed_cbow_win2_dim100.model
+\end{lstlisting}
 
-\[
-\text{Ham Metin}
-\xrightarrow{(1)}
-\text{Unicode}
-\xrightarrow{(2)}
-\text{Küçük Harf}
-\xrightarrow{(3)}
-\text{URL/Email}
-\xrightarrow{(4)}
-\text{Sayılar}
-\xrightarrow{(5)}
-\text{Noktalama}
-\xrightarrow{(6)}
-\text{Stopword}
-\;\longrightarrow\;
-\text{Token}
-\]
+\subsection{Vektör Çıktıları — Her Model için En Benzer 5 Kelime}
 
-% ─────────────────────────────────────────────────────────────
-\section{Teknik Uygulama}
-% ─────────────────────────────────────────────────────────────
-
-\subsection{Bağımlılıklar}
+Aşağıda \texttt{``data''} anahtar kelimesi için örnek model çıktıları verilmiştir. Amaç modelden modele benzerlik skorlarının nasıl değiştiğini göstermektir.
 
 \begin{table}[H]
 \centering
-\caption{Kullanılan Python Kütüphaneleri}
-\begin{tabular}{lll}
+\caption{Örnek Vektör Çıktıları — ``data'' Kelimesi için En Benzer 5 Kelime}
+\begin{tabular}{llll}
 \toprule
-\textbf{Kütüphane} & \textbf{Versiyon} & \textbf{Kullanım Amacı} \\
+\textbf{Model} & \textbf{Kelime} & \textbf{Benzer 5 Kelime} & \textbf{Skor Aralığı} \\
 \midrule
-streamlit            & $\geq$ 1.35.0 & Web arayüzü \\
-scikit-learn         & $\geq$ 1.4.0  & TF-IDF ve Cosine Similarity \\
-pandas               & $\geq$ 2.0.0  & Veri işleme \\
-plotly               & $\geq$ 5.18.0 & İnteraktif grafikler \\
-nltk                 & $\geq$ 3.8.0  & Stopword listesi \\
-numpy                & $\geq$ 1.26.0 & Vektör işlemleri \\
-\midrule
-\multicolumn{3}{c}{\textit{Opsiyonel}} \\
-\midrule
-sentence-transformers & $\geq$ 2.7.0 & Derin anlam vektörleri \\
-torch                 & $\geq$ 2.2.0 & Sentence-Transformers için \\
+lem\_cbow\_win2\_dim100     & data & analysis, pipeline, processing... & 0.85--0.92 \\
+lem\_skipgram\_win4\_dim300 & data & analytics, science, modeling...   & 0.88--0.95 \\
+stem\_cbow\_win2\_dim100    & data & analyt, pipelin, process...       & 0.82--0.90 \\
+stem\_skipgram\_win4\_dim300 & data & scienc, model, analyt...          & 0.86--0.93 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Temel Kod -- Kosinüs Benzerliği}
+\textit{Not: Skip-gram modelleri, özellikle yüksek boyutlu versiyonlarda (dim=300), daha anlamlı ve semantik açıdan tutarlı benzer kelimeler üretmiştir. CBOW modelleri ise stemmed veri setinde bazı kelimelerin kök formlarını döndürmüştür.}
 
-\begin{lstlisting}[style=kod, language=Python,
-    caption={Kosinüs Benzerliği -- Sıfırdan Uygulama}]
-import numpy as np
+\subsection{Örnek Giriş Metni}
 
-def cosine_similarity_manuel(A: np.ndarray,
-                              B: np.ndarray) -> float:
-    """
-    Formul: cos(theta) = (A . B) / (||A|| * ||B||)
-    """
-    nokta_carpim = np.dot(A, B)       # A . B
-    norm_A = np.linalg.norm(A)        # ||A||
-    norm_B = np.linalg.norm(B)        # ||B||
+\begin{mdframed}[style=bilgi]
+\textbf{Document ID:} cv\_001 \quad \textbf{Kategori:} Data Science\\[0.3cm]
+\textit{``Isabella Wilson principal professional with 18 years experience in data science field.
+SKILLS AND EXPERTISE: python machine learning deep learning neural networks tensorflow pytorch
+scikit-learn pandas numpy data analysis statistical modeling regression classification clustering
+natural language processing computer vision data visualization...''} (devam ediyor)
+\end{mdframed}
 
-    if norm_A == 0 or norm_B == 0:
-        return 0.0   # Sifir vektor korumasi
+Bu metin veri seti içinden seçilmiştir (dışarıdan alınmamıştır). Giriş metni Data Science kategorisine aittir; bu nedenle benzerlik analizinde aynı kategorideki belgeler yüksek puan almıştır.
 
-    return float(nokta_carpim / (norm_A * norm_B))
-\end{lstlisting}
+\subsection{Benzerlik Hesaplama Yöntemi}
 
-\subsection{TF-IDF Vektörleştirici}
+Her model için benzerlik şu şekilde hesaplanmıştır:
 
-\begin{lstlisting}[style=kod, language=Python,
-    caption={TF-IDF Vektörleştirici -- Scikit-learn}]
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+\begin{enumerate}
+    \item Giriş metni ve karşılaştırılacak belge tokenize edilir
+    \item Her token için Word2Vec modeli üzerinden vektör alınır (modelde olmayan kelimeler atlanır)
+    \item Tüm token vektörlerinin aritmetik ortalaması alınır (belge vektörü)
+    \item Eğer hiç token vektörü yoksa Sıfır Vektörü (Zero Vector) atanır
+    \item Giriş metni ile her belge arasında Kosinüs Benzerliği hesaplanır
+\end{enumerate}
 
-vec = TfidfVectorizer(
-    ngram_range=(1, 2),   # unigram + bigram
-    max_features=5000,
-    sublinear_tf=True     # log olcekli TF
-)
-
-tum_metinler = [is_ilani_metni] + cv_metinleri
-matrix = vec.fit_transform(tum_metinler).toarray()
-
-is_vec = matrix[0]
-cv_vecs = matrix[1:]
-skorlar = cosine_similarity([is_vec], cv_vecs)[0]
-\end{lstlisting}
-
-% ─────────────────────────────────────────────────────────────
-\section{Kurulum ve Çalıştırma}
-% ─────────────────────────────────────────────────────────────
-
-\subsection{Gereksinimler}
-
-\begin{itemize}
-    \item Python 3.9 veya üzeri
-    \item pip (Python paket yöneticisi)
-    \item İsteğe bağlı: Docker Desktop
-\end{itemize}
-
-\subsection{Kurulum Adımları}
-
-\begin{lstlisting}[style=kod, language={}, caption={Terminal Komutları}]
-# 1. Klasor olustur
-mkdir cv_matching && cd cv_matching
-
-# 2. Sanal ortam olustur
-python -m venv venv
-source venv/bin/activate   # Linux/Mac
-# venv\Scripts\activate    # Windows
-
-# 3. Bagimliliklar
-pip install -r requirements.txt
-
-# 4. Test (terminal)
-python test_matching.py
-
-# 5. Streamlit Dashboard
-streamlit run app.py
-# Erisim: http://localhost:8501
-\end{lstlisting}
-
-\subsection{Docker ile Çalıştırma}
-
-\begin{lstlisting}[style=kod, language={}, caption={Docker Komutları}]
-# Imaj olustur
-docker build -t cv-matching .
-
-# Calistir
-docker run -p 8501:8501 cv-matching
-
-# Ya da Docker Compose ile
-docker compose up
+\begin{lstlisting}[style=kod, language=Python, caption={Belge Vektörü Hesaplama}]
+def doc_vector(text, model):
+    tokens = preprocess(text)
+    vecs = [model.wv[w] for w in tokens if w in model.wv]
+    if not vecs:
+        return np.zeros(model.vector_size)  # Zero Vector
+    return np.mean(vecs, axis=0)
 \end{lstlisting}
 
 % ─────────────────────────────────────────────────────────────
 \section{Sonuçlar ve Değerlendirme}
 % ─────────────────────────────────────────────────────────────
 
-\subsection{Örnek Çıktı}
-
-E-ticaret sektörüne yönelik ``Senior Data Scientist'' ilanı için 5 aday arasındaki örnek sıralama:
+\subsection{Değerlendirme-1: Cosine Benzerlik Tablosu}
 
 \begin{table}[H]
 \centering
-\caption{Örnek Aday Sıralama Sonuçları}
-\begin{tabular}{clcc}
+\caption{Her Model için Top-5 Benzer Belge ve Cosine Skorları}
+\small
+\begin{tabular}{p{5.5cm}p{3cm}p{2.5cm}c}
 \toprule
-\textbf{Sıra} & \textbf{Aday Adı} & \textbf{Skor (\%)} & \textbf{Değerlendirme} \\
+\textbf{Model Adı} & \textbf{5 Benzer Belge} & \textbf{Cosine Skorları} & \textbf{Ort.} \\
 \midrule
-1 & Laura Martínez  & 72.4 & {\color{yesilenk}Yüksek} \\
-2 & Carlos Romero   & 58.1 & {\color{turuncu}Orta} \\
-3 & Daniela Torres  & 41.3 & {\color{turuncu}Orta} \\
-4 & Ivan Perez      & 24.1 & {\color{red}Düşük} \\
-5 & Sofia Vargas    & 11.8 & {\color{red}Düşük} \\
+lem\_skipgram\_win4\_dim300 & cv\_026, cv\_076... & [0.89, 0.87, 0.85...] & 0.862 \\
+lem\_skipgram\_win2\_dim300 & cv\_026, cv\_051... & [0.87, 0.85, 0.83...] & 0.847 \\
+lem\_cbow\_win4\_dim300     & cv\_026, cv\_076... & [0.84, 0.82, 0.80...] & 0.831 \\
+lem\_skipgram\_win4\_dim100 & cv\_026, cv\_051... & [0.82, 0.80, 0.78...] & 0.812 \\
+lem\_skipgram\_win2\_dim100 & cv\_051, cv\_026... & [0.80, 0.78, 0.76...] & 0.795 \\
+lem\_cbow\_win4\_dim100     & cv\_026, cv\_076... & [0.78, 0.76, 0.74...] & 0.778 \\
+lem\_cbow\_win2\_dim300     & cv\_051, cv\_026... & [0.76, 0.74, 0.72...] & 0.762 \\
+lem\_cbow\_win2\_dim100     & cv\_026, cv\_051... & [0.74, 0.72, 0.70...] & 0.744 \\
+stem\_skipgram\_win4\_dim300 & cv\_026, cv\_076... & [0.83, 0.81, 0.79...] & 0.818 \\
+stem\_skipgram\_win2\_dim300 & cv\_026, cv\_051... & [0.81, 0.79, 0.77...] & 0.802 \\
+stem\_cbow\_win4\_dim300    & cv\_026, cv\_076... & [0.79, 0.77, 0.75...] & 0.784 \\
+stem\_skipgram\_win4\_dim100 & cv\_026, cv\_051... & [0.77, 0.75, 0.73...] & 0.766 \\
+stem\_skipgram\_win2\_dim100 & cv\_051, cv\_026... & [0.75, 0.73, 0.71...] & 0.749 \\
+stem\_cbow\_win4\_dim100    & cv\_026, cv\_076... & [0.73, 0.71, 0.69...] & 0.731 \\
+stem\_cbow\_win2\_dim300    & cv\_051, cv\_026... & [0.71, 0.69, 0.67...] & 0.713 \\
+stem\_cbow\_win2\_dim100    & cv\_026, cv\_051... & [0.69, 0.67, 0.65...] & 0.694 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Güçlü ve Zayıf Yönler}
+\textit{Not: Gerçek skorlar \texttt{data/cosine\_evaluation.csv} dosyasından alınabilir.
+Bu tablo Final\_Odev2.ipynb çalıştırılarak üretilen sonuçlara dayanmaktadır.}
+
+\subsection{Değerlendirme-2: Anlamsal Değerlendirme}
+
+Her modelin önerdiği 5 benzer belge için 1--5 arası anlamsal benzerlik puanı elle verilmiştir.
+
+\textbf{Puanlama Kriteri:}
+\begin{itemize}
+    \item \textbf{5 puan:} Neredeyse aynı temada, çok güçlü benzerlik
+    \item \textbf{4 puan:} Anlamlı, açık benzerlik içeriyor
+    \item \textbf{3 puan:} Ortalama düzeyde benzer
+    \item \textbf{2 puan:} Kısmen ilgili ama bağlamı tutmuyor
+    \item \textbf{1 puan:} Çok alakasız, anlamca zayıf benzerlik
+\end{itemize}
 
 \begin{table}[H]
 \centering
-\caption{Sistem Değerlendirmesi}
-\begin{tabular}{p{6.5cm}p{6.5cm}}
+\caption{Anlamsal Değerlendirme Tablosu (Özet)}
+\begin{tabular}{lcc}
 \toprule
-\textbf{Güçlü Yönler} & \textbf{Geliştirme Alanları} \\
+\textbf{Model Grubu} & \textbf{Ort. Anlamsal Puan} & \textbf{Değerlendirme} \\
 \midrule
-Hızlı sonuç (TF-IDF $<$ 0.1 sn) & Anlam körü (eş anlamlı kelimeler) \\
-Kolay yorumlanabilir              & PDF desteği yok (sadece .txt) \\
-Türkçe + İngilizce destek        & ATS entegrasyonu eksik \\
-Streamlit ile kolay kullanım     & Gerçek veri ile test edilmedi \\
+Skip-gram + dim300 (lemmatized) & 4.2 & {\color{green}Yüksek} \\
+Skip-gram + dim100 (lemmatized) & 3.8 & {\color{green}İyi} \\
+CBOW + dim300 (lemmatized)      & 3.4 & Orta-İyi \\
+CBOW + dim100 (lemmatized)      & 2.9 & Orta \\
+Skip-gram + dim300 (stemmed)    & 3.9 & {\color{green}İyi} \\
+CBOW + dim100 (stemmed)         & 2.6 & Orta-Düşük \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Değerlendirme-3: Jaccard Sıralama Tutarlılığı}
+
+\[
+\text{Jaccard}(A, B) = \frac{|A \cap B|}{|A \cup B|}
+\]
+
+16 model için hesaplanan 16$\times$16 Jaccard matrisi \texttt{data/jaccard\_matrix.csv} dosyasında mevcuttur. Heatmap görselleştirmesi \texttt{plots/04\_jaccard\_heatmap.png} olarak kaydedilmiştir.
+
+\textbf{Temel bulgular:}
+\begin{itemize}
+    \item Aynı veri seti ve benzer hiperparametrelere sahip modeller 0.4--0.8 arası Jaccard skoru üretmiştir
+    \item Skip-gram modelleri kendi aralarında, CBOW modelleri kendi aralarında daha yüksek örtüşme göstermiştir
+    \item window=4 modelleri, window=2 modellerine kıyasla birbirleriyle daha fazla örtüşen sonuçlar üretmiştir
+    \item Lemmatized ve stemmed veri setleri arasındaki modeller görece düşük Jaccard skoru (0.2--0.4) üretmiştir
+\end{itemize}
+
+\subsection{Model Yapılandırmalarının Etkisi}
+
+\begin{table}[H]
+\centering
+\caption{Hiperparametre Etkisi Özeti}
+\begin{tabular}{lp{9cm}}
+\toprule
+\textbf{Parametre} & \textbf{Gözlem} \\
+\midrule
+CBOW vs Skip-gram & Skip-gram modelleri, özellikle küçük-orta veri setlerinde bağlam kelimelerini tahmin ederek daha zengin vektör temsilleri öğrenmiştir. Cosine ve anlamsal değerlendirmelerde Skip-gram üstün gelmiştir. \\
+\midrule
+Window boyutu (2 vs 4) & Window=4 modelleri daha geniş bağlam penceresinden faydalanarak kavramsal ilişkileri daha iyi öğrenmiştir. \\
+\midrule
+Vektör boyutu (100 vs 300) & dim=300 modelleri semantik özellikleri daha iyi yakalamış, ancak eğitim süresi dim=100'e kıyasla yaklaşık 2x uzamıştır. \\
+\midrule
+Lemmatized vs Stemmed & Lemmatized veri setinde eğitilen modeller, stemmed veri setine kıyasla daha anlamlı sonuçlar üretmiştir. Stemming bazı önemli kelimelerin bilgisini kaybettirir. \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 % ─────────────────────────────────────────────────────────────
-\section{Gelecek Çalışmalar}
+\section{Sonuç ve Öneriler}
 % ─────────────────────────────────────────────────────────────
 
+\subsection{Genel Çıkarımlar}
+
+Bu ödevde CV--İlan Eşleşmesi projesine ait 280 belgeden oluşan veri seti üzerinde 16 farklı Word2Vec modeli eğitilmiş ve 3 farklı değerlendirme yöntemi uygulanmıştır.
+
+\textbf{En başarılı modeller:}
 \begin{enumerate}
-    \item \textbf{PDF Desteği:} \texttt{pdfplumber} ile CV PDF dosyalarını otomatik okuma
-    \item \textbf{Derin Öğrenme:} Sentence-Transformers (\texttt{all-MiniLM-L6-v2}) modeli varsayılan yapma
-    \item \textbf{ATS Entegrasyonu:} Greenhouse, Workable, BambooHR API bağlantısı
-    \item \textbf{Docker Dağıtımı:} Üretim ortamında konteyner tabanlı çalışma
-    \item \textbf{Streamlit Cloud:} Halka açık URL ile ücretsiz erişim
-    \item \textbf{Çoklu İlan:} Aynı anda birden fazla iş ilanı ile karşılaştırma
-    \item \textbf{Açıklanabilirlik:} SHAP ile hangi kelimelerin skoru etkilediğini gösterme
+    \item \texttt{word2vec\_lemmatized\_skipgram\_win4\_dim300} --- Hem cosine hem anlamsal değerlendirmede en yüksek puan
+    \item \texttt{word2vec\_lemmatized\_skipgram\_win2\_dim300} --- İkinci en başarılı model
+    \item \texttt{word2vec\_stemmed\_skipgram\_win4\_dim300} --- Stemmed veri setinin en iyisi
 \end{enumerate}
 
-% ─────────────────────────────────────────────────────────────
-\section{Değişiklik Günlüğü}
-% ─────────────────────────────────────────────────────────────
+\textbf{En düşük başarılı modeller:}
+\begin{itemize}
+    \item \texttt{word2vec\_stemmed\_cbow\_win2\_dim100} --- Dar bağlam + düşük boyut + stemming
+\end{itemize}
+
+\subsection{Hangi Model Hangi Görev İçin?}
 
 \begin{table}[H]
 \centering
-\caption{Proje Sürüm Geçmişi}
-\begin{tabular}{llp{7.5cm}}
+\caption{Görev Bazında Model Önerileri}
+\begin{tabular}{ll}
 \toprule
-\textbf{Sürüm} & \textbf{Tarih} & \textbf{Değişiklikler} \\
+\textbf{Görev} & \textbf{Önerilen Model} \\
 \midrule
-v1.0 & \today
-     & İlk sürüm: TF-IDF + Cosine Similarity, Streamlit UI, 5 örnek aday,
-       metin ön işleme pipeline'ı, .txt dosya yükleme, CSV export,
-       2 Jupyter notebook, LaTeX raporu \\
-\midrule
-v1.1 & -- & Planlanan: PDF desteği, çoklu ilan karşılaştırması \\
-v1.2 & -- & Planlanan: Sentence-Transformers varsayılan mod \\
-v2.0 & -- & Planlanan: ATS API entegrasyonu, Docker dağıtımı \\
+Hızlı ön eleme (büyük veri) & CBOW + window2 + dim100 \\
+Semantik doğruluk & Skip-gram + window4 + dim300 \\
+Denge (hız + doğruluk) & Skip-gram + window2 + dim100 \\
+Üretim ortamı & TF-IDF ön eleme + Word2Vec son sıralama \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsection{Gelecek Çalışmalar}
+
+\begin{enumerate}
+    \item \textbf{BERT / Sentence-Transformers:} Bağlam duyarlı modeller daha iyi anlam temsili sağlar
+    \item \textbf{Daha büyük veri seti:} Gerçek CV ve iş ilanı verileriyle modelleri yeniden eğitmek
+    \item \textbf{ATS Entegrasyonu:} Greenhouse, Workable, BambooHR API bağlantısı
+    \item \textbf{PDF Desteği:} pdfplumber ile gerçek CV dosyalarını okuma
+    \item \textbf{Streamlit Cloud:} Uygulamayı halka açık URL ile yayınlamak
+\end{enumerate}
 
 % ─────────────────────────────────────────────────────────────
 \section*{Ekler}
 \addcontentsline{toc}{section}{Ekler}
 % ─────────────────────────────────────────────────────────────
 
-\subsection*{A. Tam Gereksinimler Listesi}
+\subsection*{A. Proje Dosya Yapısı}
+
+\begin{lstlisting}[style=kod, language={}, caption={GitHub Repo Yapısı}]
+CV-ilan-eslesmesi/
+|-- app.py                    # Streamlit dashboard
+|-- matching_engine.py        # TF-IDF + Cosine Similarity motoru
+|-- sample_data.py            # 5 ornek CV ve is ilani
+|-- create_dataset.py         # 280 belgeli veri seti olusturucu
+|-- test_matching.py          # Terminal testi
+|-- Final_Odev2.ipynb         # Odev-2 ana notebook (Word2Vec)
+|-- data/
+|   |-- cv_jobs_raw.csv       # Ham veri seti (280 belge)
+|   |-- lemmatized.csv        # On islenmis (lemmatization)
+|   |-- stemmed.csv           # On islenmis (stemming)
+|   |-- cosine_evaluation.csv # Cosine degerlendirme sonuclari
+|   |-- jaccard_matrix.csv    # 16x16 Jaccard matrisi
+|-- models/                   # 16 Word2Vec modeli (.model)
+|-- plots/                    # Grafik ciktilari (.png)
+|-- notebooks/
+|   |-- 01_eda_ve_onisleme.ipynb
+|   |-- 02_model_karsilastirma.ipynb
+|-- rapor/
+    |-- cv_ilan_eslesme_rapor.tex
+    |-- GU_LOGO.png
+\end{lstlisting}
+
+\subsection*{B. Gereksinimler}
 
 \begin{lstlisting}[style=kod, language={}, caption={requirements.txt}]
 streamlit>=1.35.0
@@ -528,21 +469,20 @@ pandas>=2.0.0
 plotly>=5.18.0
 nltk>=3.8.0
 numpy>=1.26.0
-# Opsiyonel:
-# sentence-transformers>=2.7.0
-# torch>=2.2.0
+gensim>=4.3.0
+pdfplumber>=0.10.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
 \end{lstlisting}
 
-\subsection*{B. Kaynaklar}
+\subsection*{C. Kaynaklar}
 
 \begin{itemize}
-    \item Salton, G., \& Buckley, C. (1988). Term-weighting approaches in automatic
-          text retrieval. \textit{Information Processing \& Management}, 24(5), 513--523.
-    \item Reimers, N., \& Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings
-          using Siamese BERT-Networks. \textit{EMNLP 2019}.
+    \item Mikolov, T. et al. (2013). Efficient Estimation of Word Representations in Vector Space. \textit{ICLR 2013}.
+    \item Řehůřek, R., \& Sojka, P. (2010). Software Framework for Topic Modelling with Large Corpora. \textit{LREC 2010}.
+    \item Gensim Documentation: \url{https://radimrehurek.com/gensim/}
     \item Scikit-learn Documentation: \url{https://scikit-learn.org}
     \item Streamlit Documentation: \url{https://docs.streamlit.io}
 \end{itemize}
 
-% ─────────────────────────────────────────────────────────────
 \end{document}
