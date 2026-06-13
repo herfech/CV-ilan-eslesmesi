@@ -242,7 +242,6 @@ python push.py "commit mesajınız"
 Final Ödev-2 raporu `rapor/` klasöründe 3 formatta mevcuttur:
 
 - `CV_Ilan_Eslesmesi_Rapor.pdf` → **DBS'e yüklenecek dosya**
-- `CV_Ilan_Eslesmesi_Rapor.docx` → Word'de düzenlemek için
 - `cv_ilan_eslesme_rapor.tex` → Overleaf'te derlemek için (GU_LOGO.png ile birlikte yükleyin)
 
 Rapor 4 bölümden oluşur: **Giriş**, **Yöntem**, **Sonuçlar ve Değerlendirme**, **Sonuç ve Öneriler**.
