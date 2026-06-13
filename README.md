@@ -1,120 +1,125 @@
-# 🎯 CV – İlan Eşleşmesi
+# 🎯 CV – İlan Eşleşmesi (Proje [50])
 
-> **İnsan Kaynakları · NLP · Kosinüs Benzerliği · Streamlit**
+**Ders:** Doğal Dil İşleme
+**Öğretim Elemanı:** Dr. Rabia Yaşa Koştaş
+**Final Ödev-2** | Teslim: 15 Haziran 2026
 
-Aday CV'lerinin iş ilanlarıyla metinsel uyumunu ölçen, TF-IDF vektörleştirme ve Kosinüs Benzerliği algoritması kullanan bir İnsan Kaynakları otomasyon sistemi.
-
----
-
-## 📋 İçindekiler
-
-- [Proje Hakkında](#proje-hakkında)
-- [Özellikler](#özellikler)
-- [Dosya Yapısı](#dosya-yapısı)
-- [Kurulum](#kurulum)
-- [Çalıştırma](#çalıştırma)
-- [Kullanım Kılavuzu](#kullanım-kılavuzu)
-- [Matematiksel Temel](#matematiksel-temel)
-- [Teknoloji Yığını](#teknoloji-yığını)
+**Proje Ekibi:**
+1. Mario Enrique Motede Dasilva
+2. Heriberto Fernandez Chale
+3. Matias Fernando Ndong Owono Obiang
 
 ---
 
-## Proje Hakkında
+## 📖 Proje Açıklaması
 
-Bu proje, İnsan Kaynakları süreçlerini otomatikleştirmek amacıyla geliştirilmiştir. Sistem şu adımları gerçekleştirir:
+Bu proje, **aday CV'leri ile iş ilanlarının metinsel uyumunu** ölçen bir NLP sistemidir. İki aşamadan oluşur:
 
-1. CV ve iş ilanı metinlerini temizler ve normalleştirir
-2. TF-IDF algoritmasıyla metinleri sayısal vektörlere dönüştürür
-3. Kosinüs Benzerliği formülüyle uyum skorunu hesaplar
-4. En yüksek skora sahip Top-N adayı sıralar
-5. Sonuçları Streamlit dashboard üzerinden görselleştirir
+1. **TF-IDF tabanlı eşleştirme motoru** (`app.py`, `matching_engine.py`) — Streamlit dashboard üzerinden gerçek zamanlı CV–İlan eşleştirmesi
+2. **Word2Vec tabanlı akademik analiz** (`Final_Odev2.ipynb`) — 280 belgelik veri seti üzerinde 16 Word2Vec modeli eğitilip karşılaştırmalı değerlendirme yapılır (Final Ödev-2)
 
 ---
 
-## Özellikler
-
-- 🔤 Türkçe + İngilizce metin desteği
-- 📊 TF-IDF ve Sentence-Transformers vektörleştirme seçeneği
-- 📎 `.txt` dosyası yükleme (birden fazla aday)
-- ✏️ Manuel CV metin girişi
-- 📈 Plotly ile interaktif grafikler (bar + gauge)
-- ⬇️ Sonuçları CSV olarak indirme
-- 🎨 Karanlık tema Streamlit arayüzü
-- 🐳 Docker desteği
-
----
-
-## Dosya Yapısı
+## 📁 Proje Dosya Yapısı
 
 ```
-CV_MATCHING/
-├── app.py                           # Streamlit ana uygulaması
-├── matching_engine.py               # NLP motoru
-├── sample_data.py                   # Örnek veriler
-├── test_matching.py                 # Terminal testi
-├── requirements.txt                 # Bağımlılıklar
-├── Dockerfile                       # Docker imajı
-├── docker-compose.yml               # Docker Compose
+cv_matching/
+├── app.py                      → Streamlit dashboard (ana uygulama)
+├── matching_engine.py          → TF-IDF + Cosine Similarity NLP motoru
+├── sample_data.py              → 5 örnek CV ve 1 örnek iş ilanı
+├── create_dataset.py           → 280 belgelik veri seti oluşturucu
+├── test_matching.py            → Terminalde hızlı test scripti
+├── push.py                     → GitHub'a otomatik yükleme betiği
+├── requirements.txt            → Python bağımlılıkları
+├── .gitignore                  → Git tarafından yok sayılan dosyalar
+│
+├── Final_Odev2.ipynb            → ⭐ ÖDEV-2 ana notebook (Word2Vec, 16 model)
+│
+├── data/
+│   ├── cv_jobs_raw.csv          → Ham veri seti (280 belge: 250 CV + 30 ilan)
+│   ├── cv_jobs_dataset.csv      → document_id | content formatında veri
+│   ├── lemmatized.csv           → Lemmatization uygulanmış veri
+│   ├── stemmed.csv               → Stemming uygulanmış veri
+│   ├── cosine_evaluation.csv     → 16 model için cosine skor tablosu
+│   ├── semantic_evaluation.csv   → 16 model için anlamsal puan tablosu
+│   └── jaccard_matrix.csv         → 16x16 Jaccard benzerlik matrisi
+│
+├── models/
+│   └── word2vec_*.model          → 16 eğitilmiş Word2Vec modeli
+│
+├── plots/
+│   └── *.png                     → Tüm grafikler (dağılım, cosine, jaccard...)
+│
 ├── notebooks/
-│   ├── 01_eda_ve_onisleme.ipynb     # Keşifsel analiz
-│   └── 02_model_karsilastirma.ipynb # Model karşılaştırması
-├── rapor/
-│   └── cv_ilan_eslesme_rapor.tex    # LaTeX teknik raporu
-└── cvs_ornek/
-    ├── aday1_cv.txt
-    └── aday2_cv.txt
+│   ├── 01_eda_ve_onisleme.ipynb  → Keşifsel veri analizi + 6 adım ön işleme
+│   └── 02_model_karsilastirma.ipynb → TF-IDF vs Word2Vec karşılaştırması
+│
+├── cvs_örnek/
+│   └── *.txt                     → Örnek yüklenebilir CV dosyaları
+│
+└── rapor/
+    ├── cv_ilan_eslesme_rapor.tex → LaTeX raporu (Overleaf)
+    ├── CV_Ilan_Eslesmesi_Rapor.docx → Word raporu (düzenlenebilir)
+    ├── CV_Ilan_Eslesmesi_Rapor.pdf  → PDF raporu (DBS'e yüklenecek)
+    └── GU_LOGO.png                 → Üniversite logosu
 ```
-
-### Her Dosya Ne Yapar?
-
-| Dosya | Açıklama |
-|---|---|
-| `app.py` | Streamlit arayüzü — tarayıcıda açılan dashboard |
-| `matching_engine.py` | Metin ön işleme, TF-IDF, Cosine Similarity mantığı |
-| `sample_data.py` | Uygulamada hazır gelen 5 örnek CV ve 1 iş ilanı |
-| `test_matching.py` | Streamlit olmadan terminalde hızlı test |
-| `requirements.txt` | `pip install -r requirements.txt` ile kurulur |
-| `Dockerfile` | Uygulamayı Docker ile çalıştırmak için |
-| `docker-compose.yml` | Docker Compose ile tek komutla başlatmak için |
-| `notebooks/01_*.ipynb` | EDA, ön işleme adımları, TF-IDF heatmap |
-| `notebooks/02_*.ipynb` | TF-IDF ile Sentence-Transformers karşılaştırması |
-| `rapor/*.tex` | Overleaf'te derlenen Türkçe teknik rapor |
-| `cvs_ornek/*.txt` | Dosya yükleme özelliğini test etmek için örnek CV'ler |
 
 ---
 
-## Kurulum
+## ⚙️ Kurulum
 
-### Gereksinimler
+### 1. Gereksinimler
 
-- Python 3.9+
-- pip
+- **Python 3.9 veya üzeri**
+- pip (Python paket yöneticisi)
 
-### Adımlar
+### 2. Sanal Ortam Oluşturma
 
 ```bash
-# 1. Repoyu klonla
-git clone https://github.com/KULLANICI_ADIN/cv-matching.git
-cd cv-matching
-
-# 2. Sanal ortam oluştur
+# Sanal ortam oluştur
 python -m venv venv
 
-# Linux / Mac:
-source venv/bin/activate
-
-# Windows:
+# Aktif et (Windows)
 venv\Scripts\activate
 
-# 3. Bağımlılıkları yükle
+# Aktif et (Mac/Linux)
+source venv/bin/activate
+```
+
+### 3. Bağımlılıkları Kurma
+
+```bash
 pip install -r requirements.txt
 ```
 
+`requirements.txt` içeriği ve her birinin amacı:
+
+| Paket | Amaç |
+|---|---|
+| `streamlit` | Web dashboard arayüzü |
+| `scikit-learn` | TF-IDF vektörleştirme + Cosine Similarity |
+| `pandas` | Veri okuma/işleme (CSV) |
+| `numpy` | Vektör işlemleri |
+| `plotly` | İnteraktif grafikler (dashboard) |
+| `nltk` | Stopword listesi, tokenization, lemmatization, stemming |
+| `gensim` | Word2Vec model eğitimi (Final Ödev-2) |
+| `pdfplumber` | PDF dosyalarından metin çıkarma |
+| `matplotlib`, `seaborn` | Notebook grafikleri (Final_Odev2, 01, 02) |
+| `jupyter`, `ipykernel` | Jupyter Notebook çalıştırma |
+
+### 4. NLTK Verilerini İndirme (otomatik)
+
+Notebook'lar ve `matching_engine.py` ilk çalıştırıldığında gerekli NLTK verilerini (`punkt`, `stopwords`, `wordnet`) otomatik indirir. Manuel indirmek isterseniz:
+
+```bash
+python -c "import nltk; nltk.download('punkt'); nltk.download('punkt_tab'); nltk.download('stopwords'); nltk.download('wordnet')"
+```
+
 ---
 
-## Çalıştırma
+## 🚀 Çalıştırma
 
-### Streamlit Dashboard (Önerilen)
+### A) Streamlit Dashboard (Ana Uygulama)
 
 ```bash
 streamlit run app.py
@@ -122,70 +127,125 @@ streamlit run app.py
 
 Tarayıcıda otomatik açılır: `http://localhost:8501`
 
-### Terminal Testi
+**Dashboard özellikleri:**
+- İş ilanını metin olarak yapıştırma **veya** `.txt`/`.pdf` dosyası yükleme
+- CV kaynağı seçimi: örnek CV'ler / proje veri seti (280 belge) / dosya yükleme / manuel giriş
+- Vektörleştirme yöntemi seçimi: **TF-IDF**, **Sentence-Transformers** veya **Word2Vec** (Final Ödev-2'nin 16 modelinden biri)
+- Sonuç görselleştirme: gauge chart, bar chart, sıralama tablosu, CSV export
+- Aday CV detaylarının ön işlenmiş halini görüntüleme
+
+### B) Terminal Testi (Streamlit'siz Hızlı Test)
 
 ```bash
 python test_matching.py
 ```
 
-### Jupyter Notebooks
+5 örnek CV ile 1 örnek iş ilanını TF-IDF + Cosine Similarity ile karşılaştırır, sonucu ASCII bar grafik olarak terminalde gösterir.
+
+### C) Veri Setini Yeniden Oluşturma
 
 ```bash
-pip install jupyter
-jupyter notebook notebooks/
+python create_dataset.py
 ```
 
-### Docker ile
+`data/cv_jobs_raw.csv` ve `data/cv_jobs_dataset.csv` dosyalarını oluşturur: 250 CV (10 kategori) + 30 iş ilanı (10 kategori x 3 seviye) = **280 belge**.
+
+> ⚠️ Bu komutu çalıştırmak mevcut veri setinin üzerine yazar. `Final_Odev2.ipynb` bu dosyalara bağımlıdır.
+
+### D) Final Ödev-2 — Word2Vec Analizi (⭐ Ana Teslim)
+
+Jupyter ortamında (VS Code, Jupyter Lab, vb.) açın:
+
+```
+Final_Odev2.ipynb
+```
+
+Tüm hücreleri **sırasıyla** (Run All veya tek tek) çalıştırın. Notebook şunları yapar:
+
+1. 280 belgelik veri setini yükler
+2. 6 adımlı ön işleme uygular → `lemmatized.csv`, `stemmed.csv` oluşturur
+3. Gensim ile **16 Word2Vec modeli** eğitir (CBOW/Skip-gram x window 2/4 x dim 100/300, lemmatized+stemmed) → `models/`
+4. Örnek giriş metni (cv_001) için her modelde **Top-5 benzer belge** bulur
+5. **3 değerlendirme** yapar:
+   - Cosine Benzerlik Tablosu → `data/cosine_evaluation.csv`
+   - Anlamsal Değerlendirme (1-5 puan) → `data/semantic_evaluation.csv`
+   - Jaccard 16x16 Matrisi + Heatmap → `data/jaccard_matrix.csv`, `plots/04_jaccard_heatmap.png`
+6. Sonuçları yorumlar ve model önerileri sunar
+
+**Süre:** Model eğitimi (hücre 7) yaklaşık 2-5 dakika sürer.
+
+### E) Ek Notebook'lar (Destekleyici Analiz)
+
+```
+notebooks/01_eda_ve_onisleme.ipynb     → Keşifsel veri analizi + 6 adım ön işleme detaylı gösterim
+notebooks/02_model_karsilastirma.ipynb → TF-IDF vs Word2Vec karşılaştırması, n-gram optimizasyonu
+```
+
+Bu notebook'lar `Final_Odev2.ipynb`'nin ürettiği `models/` klasöründeki modellere bağımlıdır — önce Final_Odev2.ipynb çalıştırılmalıdır.
+
+---
+
+## 🧠 Teknik Detaylar
+
+### Metin Ön İşleme (6 Adım)
+
+```
+Ham Metin -> Unicode Normalizasyonu -> Kucuk Harf -> URL/Email Kaldirma
+          -> Sayi Kaldirma -> Noktalama Kaldirma -> Stopword Eleme
+          -> (Lemmatization veya Stemming)
+```
+
+### Kosinüs Benzerliği
+
+```
+cos(theta) = (A . B) / (||A|| x ||B||)
+```
+
+- Sonuç aralığı: [0, 1] — 1'e yakın = yüksek uyum
+- TF-IDF için: belge bazında TF-IDF vektörleri arası benzerlik
+- Word2Vec için: belgedeki kelime vektörlerinin ortalaması (Zero Vector koruması ile)
+
+### Word2Vec — 16 Model Parametreleri
+
+| Veri Seti | Model Tipi | Window | Vector Size |
+|---|---|---|---|
+| lemmatized / stemmed | CBOW / Skip-gram | 2 / 4 | 100 / 300 |
+
+2 (veri seti) x 2 (model tipi) x 2 (window) x 2 (boyut) = **16 model**
+
+İsimlendirme: `word2vec_{lemmatized|stemmed}_{cbow|skipgram}_win{2|4}_dim{100|300}.model`
+
+---
+
+## 🔧 Sorun Giderme
+
+| Sorun | Çözüm |
+|---|---|
+| `FileNotFoundError: data/cv_jobs_raw.csv` | `python create_dataset.py` çalıştırın |
+| `NameError` (notebook'ta) | **Restart Kernel** yapıp tüm hücreleri sırayla çalıştırın (Run All) |
+| `ModuleNotFoundError: gensim` | `pip install gensim` |
+| PDF yüklenemiyor | `pip install pdfplumber` |
+| `plots/` klasörü bulunamadı | `mkdir plots` (proje kök dizininde) |
+| NLTK verisi hatası | Yukarıdaki NLTK indirme komutunu çalıştırın |
+
+---
+
+## 📤 GitHub'a Yükleme
 
 ```bash
-# İmaj oluştur ve çalıştır
-docker build -t cv-matching .
-docker run -p 8501:8501 cv-matching
-
-# Ya da Docker Compose ile
-docker compose up
+python push.py "commit mesajınız"
 ```
+
+**Repo:** https://github.com/herfech/CV-ilan-eslesmesi
 
 ---
 
-## Kullanım Kılavuzu
+## 📄 Rapor
 
-1. **Sol panel** → İş ilanı metnini yapıştır
-2. **Sağ panel** → CV kaynağını seç:
-   - `📂 Örnek CV'leri kullan` → 5 hazır aday yüklenir
-   - `📎 .txt dosyası yükle` → Kendi dosyalarını yükle
-   - `✏️ Metni elle gir` → Doğrudan yapıştır
-3. **"🚀 Analizi Başlat"** butonuna bas
-4. Gauge grafiği, bar grafik ve tabloyu incele
-5. **CSV indir** ile sonuçları dışa aktar
+Final Ödev-2 raporu `rapor/` klasöründe 3 formatta mevcuttur:
 
----
+- `CV_Ilan_Eslesmesi_Rapor.pdf` → **DBS'e yüklenecek dosya**
+- `CV_Ilan_Eslesmesi_Rapor.docx` → Word'de düzenlemek için
+- `cv_ilan_eslesme_rapor.tex` → Overleaf'te derlemek için (GU_LOGO.png ile birlikte yükleyin)
 
-## Matematiksel Temel
-
-```
-TF-IDF(t, d) = TF(t,d) × log(N / df(t))
-
-Kosinüs Benzerliği:
-similarity = cos(θ) = (A · B) / (‖A‖ × ‖B‖)
-```
-
-| Skor | Değerlendirme |
-|---|---|
-| 0.60 – 1.00 | 🟢 Yüksek uyum |
-| 0.35 – 0.60 | 🟡 Orta uyum |
-| 0.00 – 0.35 | 🔴 Düşük uyum |
-
----
-
-## Teknoloji Yığını
-
-| Katman | Teknoloji |
-|---|---|
-| Arayüz | Streamlit |
-| NLP | Scikit-learn (TF-IDF) |
-| Görselleştirme | Plotly |
-| Metin İşleme | NLTK |
-| Veri | Pandas, NumPy |
-| Konteyner | Docker |
-| Derin NLP (opsiyonel) | Sentence-Transformers |
+Rapor 4 bölümden oluşur: **Giriş**, **Yöntem**, **Sonuçlar ve Değerlendirme**, **Sonuç ve Öneriler**.
