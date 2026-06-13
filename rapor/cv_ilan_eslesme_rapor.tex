@@ -28,6 +28,7 @@
 \usepackage{microtype}
 \usepackage{longtable}
 \usepackage{multirow}
+\usepackage{tabularx}
 
 \geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headheight=15pt}
 
@@ -284,36 +285,36 @@ def doc_vector(text, model):
 
 \begin{table}[H]
 \centering
-\caption{Her Model için Top-5 Benzer Belge ve Cosine Skorları}
-\small
-\begin{tabular}{p{5.5cm}p{3cm}p{2.5cm}c}
+\caption{Her Model için Top-5 Benzer Belge ve Cosine Skorları (Tam Veri Seti)}
+\label{tab:model_karsilastirma_tam}
+\footnotesize % Hace la letra un punto más pequeña para que el texto largo quepa perfectamente
+\begin{tabularx}{\textwidth}{l X X c}
 \toprule
 \textbf{Model Adı} & \textbf{5 Benzer Belge} & \textbf{Cosine Skorları} & \textbf{Ort.} \\
 \midrule
-lem\_skipgram\_win4\_dim300 & cv\_026, cv\_076... & [0.89, 0.87, 0.85...] & 0.862 \\
-lem\_skipgram\_win2\_dim300 & cv\_026, cv\_051... & [0.87, 0.85, 0.83...] & 0.847 \\
-lem\_cbow\_win4\_dim300     & cv\_026, cv\_076... & [0.84, 0.82, 0.80...] & 0.831 \\
-lem\_skipgram\_win4\_dim100 & cv\_026, cv\_051... & [0.82, 0.80, 0.78...] & 0.812 \\
-lem\_skipgram\_win2\_dim100 & cv\_051, cv\_026... & [0.80, 0.78, 0.76...] & 0.795 \\
-lem\_cbow\_win4\_dim100     & cv\_026, cv\_076... & [0.78, 0.76, 0.74...] & 0.778 \\
-lem\_cbow\_win2\_dim300     & cv\_051, cv\_026... & [0.76, 0.74, 0.72...] & 0.762 \\
-lem\_cbow\_win2\_dim100     & cv\_026, cv\_051... & [0.74, 0.72, 0.70...] & 0.744 \\
-stem\_skipgram\_win4\_dim300 & cv\_026, cv\_076... & [0.83, 0.81, 0.79...] & 0.818 \\
-stem\_skipgram\_win2\_dim300 & cv\_026, cv\_051... & [0.81, 0.79, 0.77...] & 0.802 \\
-stem\_cbow\_win4\_dim300    & cv\_026, cv\_076... & [0.79, 0.77, 0.75...] & 0.784 \\
-stem\_skipgram\_win4\_dim100 & cv\_026, cv\_051... & [0.77, 0.75, 0.73...] & 0.766 \\
-stem\_skipgram\_win2\_dim100 & cv\_051, cv\_026... & [0.75, 0.73, 0.71...] & 0.749 \\
-stem\_cbow\_win4\_dim100    & cv\_026, cv\_076... & [0.73, 0.71, 0.69...] & 0.731 \\
-stem\_cbow\_win2\_dim300    & cv\_051, cv\_026... & [0.71, 0.69, 0.67...] & 0.713 \\
-stem\_cbow\_win2\_dim100    & cv\_026, cv\_051... & [0.69, 0.67, 0.65...] & 0.694 \\
+lem\_cbow\_win2\_dim300 & cv\_136, cv\_234, cv\_004, cv\_074, cv\_154 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9999 \\
+lem\_cbow\_win4\_dim300 & cv\_234, cv\_136, cv\_226, cv\_096, cv\_154 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9998 \\
+stem\_cbow\_win2\_dim300 & cv\_011, cv\_121, cv\_044, cv\_074, cv\_004 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9998 \\
+lem\_cbow\_win2\_dim100 & cv\_136, cv\_234, cv\_096, cv\_146, cv\_226 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9997 \\
+stem\_cbow\_win2\_dim100 & cv\_011, cv\_121, cv\_073, cv\_100, cv\_211 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9997 \\
+stem\_cbow\_win4\_dim300 & cv\_011, cv\_073, cv\_121, cv\_154, cv\_234 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9997 \\
+lem\_cbow\_win4\_dim100 & cv\_136, cv\_096, cv\_226, cv\_196, cv\_176 & [1.0, 1.0, 1.0, 1.0, 1.0] & 0.9996 \\
+stem\_cbow\_win4\_dim100 & cv\_011, cv\_121, cv\_073, cv\_211, cv\_234 & [1.0, 1.0, 1.0, 0.999, 0.999] & 0.9995 \\
+stem\_skipgram\_win2\_dim300 & cv\_011, cv\_121, cv\_211, cv\_131, cv\_061 & [1.0, 0.999, 0.999, 0.997, 0.996] & 0.9983 \\
+lem\_skipgram\_win2\_dim300 & cv\_121, cv\_011, cv\_211, cv\_172, cv\_140 & [0.999, 0.999, 0.999, 0.997, 0.997] & 0.9980 \\
+stem\_skipgram\_win2\_dim100 & cv\_011, cv\_121, cv\_211, cv\_131, cv\_061 & [1.0, 1.0, 0.999, 0.996, 0.995] & 0.9978 \\
+lem\_skipgram\_win2\_dim100 & cv\_121, cv\_011, cv\_211, cv\_172, cv\_031 & [0.999, 0.999, 0.999, 0.996, 0.995] & 0.9975 \\
+stem\_skipgram\_win4\_dim300 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & [0.999, 0.999, 0.999, 0.992, 0.99] & 0.9957 \\
+lem\_skipgram\_win4\_dim300 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_061 & [0.999, 0.999, 0.999, 0.992, 0.989] & 0.9956 \\
+stem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & [0.999, 0.999, 0.998, 0.991, 0.989] & 0.9952 \\
+lem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & [0.999, 0.999, 0.999, 0.993, 0.987] & 0.9951 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \textit{Not: Gerçek skorlar \texttt{data/cosine\_evaluation.csv} dosyasından alınabilir.
 Bu tablo Final\_Odev2.ipynb çalıştırılarak üretilen sonuçlara dayanmaktadır.}
 
-\newpage %
 \subsection{Değerlendirme-2: Anlamsal Değerlendirme}
 
 Her modelin önerdiği 5 benzer belge için 1--5 arası anlamsal benzerlik puanı elle verilmiştir.
