@@ -47,6 +47,8 @@ cv_matching/
 ├── models/
 │   └── word2vec_*.model          → 16 eğitilmiş Word2Vec modeli
 │
+├── plots/
+│   └── *.png                     → Tüm grafikler (dağılım, cosine, jaccard...)
 │
 ├── notebooks/plots
 │   ├── 01_eda_ve_onisleme.ipynb  → Keşifsel veri analizi + 6 adım ön işleme
@@ -58,6 +60,7 @@ cv_matching/
 └── rapor/
     ├── cv_ilan_eslesme_rapor.tex → LaTeX raporu (Overleaf)
     ├── CV_Ilan_Eslesmesi_Rapor.pdf  → PDF raporu (DBS'e yüklenecek)
+    ├── 04_jaccard_heatmap.png  → ısı haritası resmi
     └── GU_LOGO.png                 → Üniversite logosu
 ```
 
