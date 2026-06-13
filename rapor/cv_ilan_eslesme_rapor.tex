@@ -93,7 +93,7 @@
 {\large\bfseries BİLGİSAYAR TEKNOLOJİLERİ BÖLÜMÜ}\\[0.1cm]
 {\large\bfseries BİLGİSAYAR PROGRAMCILIĞI PROGRAMI}\\[0.8cm]
 
-\includegraphics[width=4cm]{GU_LOGO.png}\\[0.8cm]
+\includegraphics[width=4cm]{GU_LOGO.png}\\[0.3cm]
 
 {\color{anarenk}\rule{0.85\textwidth}{1.5pt}}\\[0.4cm]
 
@@ -108,20 +108,15 @@ Metinsel Uyumunun Ölçülmesi}\\[0.3cm]
 {\large\bfseries PROJE EKİBİ:}\\[0.4cm]
 \begin{tabular}{rl}
     1. & \textbf{Mario Enrique Motede Dasilva} \\
-       & \small(Grup Sözcüsü / Veritabanı Mimarı) \\[0.2cm]
     2. & \textbf{Heriberto Fernandez Chale} \\
-       & \small(Sistem Entegratörü / UI-UX Tasarımcı) \\[0.2cm]
     3. & \textbf{Matias Fernando Ndong Owono Obiang} \\
-       & \small(Güvenlik Uzmanı / Hesap Yönetimi) \\[0.2cm]
-    4. & \textbf{Rodolfo Mba Ndong Mebaha} \\
-       & \small(Finansal Mantık ve Satış Yazılımcısı) \\
 \end{tabular}
 
 \vspace{0.8cm}
 \begin{tabular}{ll}
-    \textbf{Ders:}             & Doğal Dil İşleme \\[0.2cm]
-    \textbf{Öğretim Elemanı:}  & Dr. Rabia Yaşa Koştaş \\[0.2cm]
-    \textbf{GitHub:}           & \url{https://github.com/herfech/CV-ilan-eslesmesi} \\
+    \textbf{Ders:} Doğal Dil İşleme \\[0.2cm]
+    \textbf{Öğretim Elemanı:}   Dr. Rabia Yaşa Koştaş \\[0.2cm]
+    \textbf{GitHub:} \url{https://github.com/herfech/CV-ilan-eslesmesi.git} \\
 \end{tabular}
 
 \vfill
@@ -141,7 +136,7 @@ Bu ödevin amacı, CV--İlan Eşleşmesi projesine ait veri seti üzerinde Word2
 
 \subsection{Veri Seti}
 
-\begin{mdframed}[style=bilgi]
+\begin{mdframed}[style=bilgi, rightmargin=-0.7cm]
 \textbf{CV--İlan Eşleşmesi Veri Seti}\\[0.3cm]
 \begin{tabular}{ll}
 Kaynak       & Proje [50] kapsamında özgün olarak oluşturulmuştur \\
@@ -246,6 +241,7 @@ stem\_skipgram\_win4\_dim300 & data & scienc, model, analyt...          & 0.86--
 
 \textit{Not: Skip-gram modelleri, özellikle yüksek boyutlu versiyonlarda (dim=300), daha anlamlı ve semantik açıdan tutarlı benzer kelimeler üretmiştir. CBOW modelleri ise stemmed veri setinde bazı kelimelerin kök formlarını döndürmüştür.}
 
+\newpage %
 \subsection{Örnek Giriş Metni}
 
 \begin{mdframed}[style=bilgi]
@@ -279,6 +275,7 @@ def doc_vector(text, model):
     return np.mean(vecs, axis=0)
 \end{lstlisting}
 
+\newpage %
 % ─────────────────────────────────────────────────────────────
 \section{Sonuçlar ve Değerlendirme}
 % ─────────────────────────────────────────────────────────────
@@ -316,6 +313,7 @@ stem\_cbow\_win2\_dim100    & cv\_026, cv\_051... & [0.69, 0.67, 0.65...] & 0.69
 \textit{Not: Gerçek skorlar \texttt{data/cosine\_evaluation.csv} dosyasından alınabilir.
 Bu tablo Final\_Odev2.ipynb çalıştırılarak üretilen sonuçlara dayanmaktadır.}
 
+\newpage %
 \subsection{Değerlendirme-2: Anlamsal Değerlendirme}
 
 Her modelin önerdiği 5 benzer belge için 1--5 arası anlamsal benzerlik puanı elle verilmiştir.
@@ -451,8 +449,7 @@ CV-ilan-eslesmesi/
 |   |-- cosine_evaluation.csv # Cosine degerlendirme sonuclari
 |   |-- jaccard_matrix.csv    # 16x16 Jaccard matrisi
 |-- models/                   # 16 Word2Vec modeli (.model)
-|-- plots/                    # Grafik ciktilari (.png)
-|-- notebooks/
+|-- notebooks/plots
 |   |-- 01_eda_ve_onisleme.ipynb
 |   |-- 02_model_karsilastirma.ipynb
 |-- rapor/
