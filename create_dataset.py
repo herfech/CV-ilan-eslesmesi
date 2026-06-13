@@ -7,13 +7,13 @@ import os
 
 random.seed(42)
 
-categorias = [
+kategoriler = [
     "Data Science", "Software Engineering", "Marketing", "Finance",
     "Human Resources", "Healthcare", "Education", "Sales",
     "Project Management", "Cybersecurity"
 ]
 
-habilidades = {
+yetenekler = {
     "Data Science": [
         "python machine learning deep learning neural networks tensorflow pytorch scikit-learn pandas numpy data analysis statistical modeling regression classification clustering natural language processing computer vision data visualization matplotlib seaborn sql database big data spark hadoop feature engineering model deployment mlops",
         "statistical analysis predictive modeling data mining exploratory data analysis hypothesis testing ab testing time series forecasting business intelligence tableau power bi r programming data warehousing etl pipeline cloud computing aws gcp azure jupyter notebook git version control",
@@ -76,7 +76,7 @@ habilidades = {
     ],
 }
 
-experiencias = {
+deneyimler = {
     "Data Science": [
         "developed machine learning models to predict customer churn reducing attrition by 25 percent built recommendation system increasing user engagement by 40 percent created automated data pipeline processing 10 million records daily",
         "analyzed large datasets using python and sql to identify business opportunities led team of 5 data scientists delivering projects on time published research paper on deep learning applications",
@@ -149,7 +149,7 @@ experiencias = {
     ],
 }
 
-educacion = {
+eğitim = {
     "Data Science": ["bachelor degree computer science statistics mathematics", "master degree data science machine learning artificial intelligence", "phd computational linguistics natural language processing", "master degree applied mathematics statistics university"],
     "Software Engineering": ["bachelor degree computer science software engineering", "master degree computer science software systems", "bachelor degree electrical engineering computer science", "self taught software engineer bootcamp coding"],
     "Marketing": ["bachelor degree marketing communications business administration", "master degree marketing digital marketing business", "bachelor degree journalism communications public relations", "master degree business administration mba marketing"],
@@ -162,8 +162,8 @@ educacion = {
     "Cybersecurity": ["bachelor degree computer science information security cybersecurity", "master degree information security cybersecurity network security", "certified information systems security professional cissp certified ethical hacker ceh", "bachelor degree information technology security administration"],
 }
 
-# Generar nombres variados
-nombres_base = [
+
+temel_adlar = [
     "James", "Sarah", "Michael", "Emily", "David", "Jessica", "Daniel", "Ashley",
     "Christopher", "Amanda", "Matthew", "Stephanie", "Joshua", "Megan", "Andrew",
     "Lauren", "Ryan", "Kayla", "Brandon", "Rachel", "Kevin", "Brittany", "Justin",
@@ -184,16 +184,16 @@ apellidos = [
 
 registros = []
 doc_id = 1
-random.shuffle(nombres_base)
+random.shuffle(temel_adlar)
 
 for i in range(250):
-    categoria = categorias[i % len(categorias)]
-    nombre = f"{nombres_base[i % len(nombres_base)]} {apellidos[i % len(apellidos)]}"
+    categoria = kategoriler[i % len(kategoriler)]
+    nombre = f"{temel_adlar[i % len(temel_adlar)]} {apellidos[i % len(apellidos)]}"
     anos = random.randint(1, 18)
     
-    hab = random.choice(habilidades[categoria])
-    exp = random.choice(experiencias[categoria])
-    edu = random.choice(educacion[categoria])
+    hab = random.choice(yetenekler[categoria])
+    exp = random.choice(deneyimler[categoria])
+    edu = random.choice(eğitim[categoria])
     
     nivel = random.choice(["junior", "mid level", "senior", "lead", "principal", "staff"])
     
@@ -223,7 +223,7 @@ Strong communication leadership and analytical skills with passion for innovatio
     })
     doc_id += 1
 
-# Job postings
+# İş ilanları
 job_templates = [
     ("Data Science", "We are seeking experienced Data Scientist to join our team. Requirements include python machine learning deep learning tensorflow pytorch scikit-learn pandas numpy statistical modeling regression classification clustering natural language processing data visualization sql big data spark feature engineering model deployment mlops cloud computing. Responsibilities include developing machine learning models analyzing large datasets building data pipelines presenting findings to stakeholders. Minimum 5 years experience required master degree preferred."),
     ("Software Engineering", "Full Stack Software Engineer needed. Requirements include javascript typescript react nodejs python django rest api docker kubernetes microservices postgresql mongodb redis git devops ci cd cloud services. Responsibilities include developing web applications building scalable backend systems conducting code reviews collaborating with product team. Minimum 3 years experience bachelor degree computer science required."),

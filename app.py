@@ -1,7 +1,6 @@
 """
 ╔══════════════════════════════════════════════════════════════╗
 ║         CV - İlan Eşleşmesi | HR Matching Dashboard          ║
-║         Geliştirici: Senior Data Scientist & Full-stack      ║
 ╚══════════════════════════════════════════════════════════════╝
 
 Açıklama:
@@ -30,14 +29,14 @@ import plotly.graph_objects as go
 from matching_engine import MatchingEngine, preprocess_text
 from sample_data import JOB_DESCRIPTION, SAMPLE_CVS
 
-# PDF desteği (opsiyonel)
+# PDF desteği
 try:
     import pdfplumber
     PDF_AVAILABLE = True
 except ImportError:
     PDF_AVAILABLE = False
 
-# Word2Vec desteği (opsiyonel - Final Ödev-2 modelleri için)
+# Word2Vec desteği
 try:
     from gensim.models import Word2Vec
     GENSIM_AVAILABLE = True

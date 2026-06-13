@@ -2,9 +2,6 @@
 """
 push.py — CV Matching projesini GitHub'a otomatik yükler.
 
-Kullanım:
-    python push.py                        → "Güncelleme" mesajıyla yükle
-    python push.py "PDF desteği eklendi"  → Özel mesajla yükle
 """
 
 import subprocess
