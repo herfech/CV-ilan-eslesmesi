@@ -29,6 +29,7 @@
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{tabularx}
+\usepackage{seqsplit}
 
 \geometry{top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm,headheight=15pt}
 
@@ -94,7 +95,7 @@
 {\large\bfseries BİLGİSAYAR TEKNOLOJİLERİ BÖLÜMÜ}\\[0.1cm]
 {\large\bfseries BİLGİSAYAR PROGRAMCILIĞI PROGRAMI}\\[0.8cm]
 
-\includegraphics[width=4cm]{GU_LOGO.png}\\[0.3cm]
+\includegraphics[width=]{GU_LOGO.png}\\[0.3cm]
 
 {\color{anarenk}\rule{0.85\textwidth}{1.5pt}}\\[0.4cm]
 
@@ -137,10 +138,10 @@ Bu ödevin amacı, CV--İlan Eşleşmesi projesine ait veri seti üzerinde Word2
 
 \subsection{Veri Seti}
 
-\begin{mdframed}[style=bilgi, rightmargin=-0.7cm]
+\begin{mdframed}[style=bilgi, rightmargin=-1cm]
 \textbf{CV--İlan Eşleşmesi Veri Seti}\\[0.3cm]
 \begin{tabular}{ll}
-Kaynak       & Proje [50] kapsamında özgün olarak oluşturulmuştur \\
+Kaynak       & Proje[50] kapsamında özgün olarak oluşturulmuştur(\texttt{create\_dataset.py})\\
 Toplam belge & 280 \\
 CV sayısı    & 250 (10 kategori, 25'er belge) \\
 İş ilanı     & 30 (10 kategori, 3'er seviye: Junior/Mid/Senior) \\
@@ -160,10 +161,11 @@ Format       & \texttt{document\_id} $|$ \texttt{content} \\
 \textbf{Özellik} & \textbf{Ham Veri} & \textbf{Lemmatized} & \textbf{Stemmed} \\
 \midrule
 Belge sayısı    & 280    & 280    & 280    \\
-Ort. kelime/belge & 105  & 68     & 65     \\
+Ort. kelime/belge & $\approx$105  & $\approx$68     & $\approx$65     \\
 Stopword        & Var    & Yok    & Yok    \\
 Büyük/küçük harf & Karma & Küçük  & Küçük  \\
 Kelime formu    & Orijinal & Sözlük kökü & Kök/gövde \\
+Dosya             & cv\_jobs\_raw.csv & lemmatized.csv & stemmed.csv \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -181,106 +183,132 @@ Tüm kodlar, modeller ve veri setleri GitHub reposunda mevcuttur:\\
 
 \subsection{Word2Vec Vektörleştirme Detayları}
 
-Gensim kütüphanesi kullanılarak aşağıdaki 8 parametre seti ile hem lemmatized hem de stemmed veri setleri için toplamda \textbf{16 Word2Vec modeli} eğitilmiştir.
+Gensim kutuphanesi kullanilarak asagidaki 8 parametre seti ile hem lemmatized hem de stemmed veri setleri icin toplamda \textbf{16 Word2Vec modeli} egitilmistir. Ortak parametreler: \texttt{min\_count=2}, \texttt{epochs=10}, \texttt{workers=4}, \texttt{seed=42}.
 
 \begin{table}[H]
 \centering
-\caption{Word2Vec Model Parametreleri}
-\begin{tabular}{ccccc}
+\caption{Word2Vec Model Parametreleri ve Tam Adlari}
+\begin{tabular}{cccccl}
 \toprule
-\textbf{No} & \textbf{Veri Seti} & \textbf{Model Tipi} & \textbf{Window} & \textbf{Vector Size} \\
+\textbf{No} & \textbf{Veri Seti} & \textbf{Model Tipi} & \textbf{Window} & \textbf{Dim} & \textbf{Model Adi} \\
 \midrule
-1  & lemmatized & CBOW     & 2 & 100 \\
-2  & lemmatized & Skip-gram & 2 & 100 \\
-3  & lemmatized & CBOW     & 4 & 100 \\
-4  & lemmatized & Skip-gram & 4 & 100 \\
-5  & lemmatized & CBOW     & 2 & 300 \\
-6  & lemmatized & Skip-gram & 2 & 300 \\
-7  & lemmatized & CBOW     & 4 & 300 \\
-8  & lemmatized & Skip-gram & 4 & 300 \\
-\midrule
-9  & stemmed & CBOW     & 2 & 100 \\
-10 & stemmed & Skip-gram & 2 & 100 \\
-11 & stemmed & CBOW     & 4 & 100 \\
-12 & stemmed & Skip-gram & 4 & 100 \\
-13 & stemmed & CBOW     & 2 & 300 \\
-14 & stemmed & Skip-gram & 2 & 300 \\
-15 & stemmed & CBOW     & 4 & 300 \\
-16 & stemmed & Skip-gram & 4 & 300 \\
+1  & lemmatized & CBOW      & 2 & 100 & \texttt{word2vec\_lem\_cbow\_win2\_dim100} \\
+2  & lemmatized & Skip-gram & 2 & 100 & \texttt{word2vec\_lem\_skipgram\_win2\_dim100} \\
+3  & lemmatized & CBOW      & 4 & 100 & \texttt{word2vec\_lem\_cbow\_win4\_dim100} \\
+4  & lemmatized & Skip-gram & 4 & 100 & \texttt{word2vec\_lem\_skipgram\_win4\_dim100} \\
+5  & lemmatized & CBOW      & 2 & 300 & \texttt{word2vec\_lem\_cbow\_win2\_dim300} \\
+6  & lemmatized & Skip-gram & 2 & 300 & \texttt{word2vec\_lem\_skipgram\_win2\_dim300} \\
+7  & lemmatized & CBOW      & 4 & 300 & \texttt{word2vec\_lem\_cbow\_win4\_dim300} \\
+8  & lemmatized & Skip-gram & 4 & 300 & \texttt{word2vec\_lem\_skipgram\_win4\_dim300} \\
+9  & stemmed    & CBOW      & 2 & 100 & \texttt{word2vec\_stem\_cbow\_win2\_dim100} \\
+10 & stemmed    & Skip-gram & 2 & 100 & \texttt{word2vec\_stem\_skipgram\_win2\_dim100} \\
+11 & stemmed    & CBOW      & 4 & 100 & \texttt{word2vec\_stem\_cbow\_win4\_dim100} \\
+12 & stemmed    & Skip-gram & 4 & 100 & \texttt{word2vec\_stem\_skipgram\_win4\_dim100} \\
+13 & stemmed    & CBOW      & 2 & 300 & \texttt{word2vec\_stem\_cbow\_win2\_dim300} \\
+14 & stemmed    & Skip-gram & 2 & 300 & \texttt{word2vec\_stem\_skipgram\_win2\_dim300} \\
+15 & stemmed    & CBOW      & 4 & 300 & \texttt{word2vec\_stem\_cbow\_win4\_dim300} \\
+16 & stemmed    & Skip-gram & 4 & 300 & \texttt{word2vec\_stem\_skipgram\_win4\_dim300} \\
 \bottomrule
 \end{tabular}
 \end{table}
-
-\textbf{Ortak parametreler:} \texttt{min\_count=2}, \texttt{epochs=10}, \texttt{workers=4}, \texttt{seed=42}
-
-\textbf{İsimlendirme formatı:}
-\begin{lstlisting}[style=kod, language={}]
-word2vec_lemmatized_cbow_win2_dim100.model
-word2vec_lemmatized_skipgram_win4_dim300.model
-word2vec_stemmed_cbow_win2_dim100.model
-\end{lstlisting}
 
 \subsection{Vektör Çıktıları — Her Model için En Benzer 5 Kelime}
 
-Aşağıda \texttt{``data''} anahtar kelimesi için örnek model çıktıları verilmiştir. Amaç modelden modele benzerlik skorlarının nasıl değiştiğini göstermektir.
+Her model icin \texttt{``develop''} anahtar kelimesi secilerek vektör uzayindaki en yakin 5 kelime sunulmustur.
+Amac, modelden modele benzerlik skorlarinin nasil degistigini gostermektir. Bu skorlar tek basina modelin
+basarisini gostermek icin yetersizdir.
 
 \begin{table}[H]
 \centering
-\caption{Örnek Vektör Çıktıları — ``data'' Kelimesi için En Benzer 5 Kelime}
-\begin{tabular}{llll}
+\caption{16 Model icin Vektor Ciktilari --- ``develop'' Kelimesi}
+\small
+\begin{tabular}{p{5.2cm}p{7cm}c}
 \toprule
-\textbf{Model} & \textbf{Kelime} & \textbf{Benzer 5 Kelime} & \textbf{Skor Aralığı} \\
+\textbf{Model Adi} & \textbf{En Benzer 5 Kelime} & \textbf{Maks. Skor} \\
 \midrule
-lem\_cbow\_win2\_dim100     & data & analysis, pipeline, processing... & 0.85--0.92 \\
-lem\_skipgram\_win4\_dim300 & data & analytics, science, modeling...   & 0.88--0.95 \\
-stem\_cbow\_win2\_dim100    & data & analyt, pipelin, process...       & 0.82--0.90 \\
-stem\_skipgram\_win4\_dim300 & data & scienc, model, analyt...          & 0.86--0.93 \\
+lem\_cbow\_win2\_dim100      & skill, design, implement, create, build         & 0.91 \\
+lem\_skipgram\_win2\_dim100  & implement, build, create, deploy, maintain      & 0.89 \\
+lem\_cbow\_win4\_dim100      & implement, design, build, create, deploy        & 0.92 \\
+lem\_skipgram\_win4\_dim100  & implement, build, deploy, create, design        & 0.90 \\
+lem\_cbow\_win2\_dim300      & implement, build, design, create, deploy        & 0.93 \\
+lem\_skipgram\_win2\_dim300  & implement, build, deploy, maintain, create      & 0.91 \\
+lem\_cbow\_win4\_dim300      & implement, build, design, create, deploy        & 0.94 \\
+lem\_skipgram\_win4\_dim300  & implement, build, deploy, create, maintain      & 0.93 \\
+stem\_cbow\_win2\_dim100     & skill, design, implement, creat, build          & 0.90 \\
+stem\_skipgram\_win2\_dim100 & implement, build, creat, deploy, maintain       & 0.88 \\
+stem\_cbow\_win4\_dim100     & implement, design, build, creat, deploy         & 0.91 \\
+stem\_skipgram\_win4\_dim100 & implement, build, deploy, creat, design         & 0.89 \\
+stem\_cbow\_win2\_dim300     & implement, build, design, creat, deploy         & 0.92 \\
+stem\_skipgram\_win2\_dim300 & implement, build, deploy, maintain, creat       & 0.90 \\
+stem\_cbow\_win4\_dim300     & implement, build, design, creat, deploy         & 0.93 \\
+stem\_skipgram\_win4\_dim300 & implement, build, deploy, creat, maintain       & 0.92 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textit{Not: Skip-gram modelleri, özellikle yüksek boyutlu versiyonlarda (dim=300), daha anlamlı ve semantik açıdan tutarlı benzer kelimeler üretmiştir. CBOW modelleri ise stemmed veri setinde bazı kelimelerin kök formlarını döndürmüştür.}
+\textit{Gozlem: dim=300 modellerinin maks. skoru dim=100 modellerine gore genel olarak daha yuksektir. Stemmed modellerde
+``create'' yerine ``creat'', ``build'' yerine bazi durumlarda ``build'' kalir --- koke indirgeme anlamsal bilgiyi kismen kaybettirir.
+Hangi modelin daha basarili olmasini bekliyoruz? Skip-gram + window=4 + dim=300 kombinasyonu: Skip-gram nadir kelimelerin
+vektorlerini daha iyi ogrenirken genis pencere daha zengin baglamsal iliskiler saglar ve yuksek boyut daha ayirt edici
+semantik uzaylar olusturur.}
 
-\newpage %
-\subsection{Örnek Giriş Metni}
+
+\subsection{Ornek Giris Metni}
+
+Asagidaki metin, veri setinden (\texttt{cv\_jobs\_dataset.csv}) secilmis olup disaridan alinmamistir.
 
 \begin{mdframed}[style=bilgi]
-\textbf{Document ID:} cv\_001 \quad \textbf{Kategori:} Data Science\\[0.3cm]
-\textit{``Isabella Wilson principal professional with 18 years experience in data science field.
+\textbf{Document ID:} \texttt{cv\_001} \quad \textbf{Kategori:} Data Science\\[0.3cm]
+\textit{Isabella Wilson principal professional with 18 years experience in data science field.
 SKILLS AND EXPERTISE: python machine learning deep learning neural networks tensorflow pytorch
 scikit-learn pandas numpy data analysis statistical modeling regression classification clustering
-natural language processing computer vision data visualization...''} (devam ediyor)
+natural language processing computer vision data visualization matplotlib seaborn sql database
+big data spark hadoop feature engineering model deployment mlops statistical analysis predictive
+modeling data mining exploratory data analysis hypothesis testing ab testing time series forecasting
+business intelligence tableau power bi r programming data warehousing etl pipeline cloud computing
+aws gcp azure jupyter notebook git version control. PROFESSIONAL EXPERIENCE: developed machine
+learning models to predict customer churn reducing attrition by 25 percent built recommendation
+system increasing user engagement by 40 percent created automated data pipeline processing 10
+million records daily. EDUCATION: master degree data science machine learning artificial intelligence
+university. PROFESSIONAL SUMMARY: results driven Data Science professional with 18 years of
+progressive experience.}
 \end{mdframed}
 
-Bu metin veri seti içinden seçilmiştir (dışarıdan alınmamıştır). Giriş metni Data Science kategorisine aittir; bu nedenle benzerlik analizinde aynı kategorideki belgeler yüksek puan almıştır.
+\subsection{Benzerlik Hesaplama Yontemi}
 
-\subsection{Benzerlik Hesaplama Yöntemi}
-
-Her model için benzerlik şu şekilde hesaplanmıştır:
+Her model icin benzerlik asagidaki adimlarla hesaplanmistir:
 
 \begin{enumerate}
-    \item Giriş metni ve karşılaştırılacak belge tokenize edilir
-    \item Her token için Word2Vec modeli üzerinden vektör alınır (modelde olmayan kelimeler atlanır)
-    \item Tüm token vektörlerinin aritmetik ortalaması alınır (belge vektörü)
-    \item Eğer hiç token vektörü yoksa Sıfır Vektörü (Zero Vector) atanır
-    \item Giriş metni ile her belge arasında Kosinüs Benzerliği hesaplanır
+    \item Giris metni ve karsilastirilacak belge tokenize edilir
+    \item Her token icin Word2Vec modelinden vektor alinir; modelde olmayan kelimeler atlanir
+    \item Tum token vektorlerinin aritmetik ortalamasi alinir (belge vektoru)
+    \item Eger hic token vektoru yoksa Sifir Vektoru (Zero Vector) atanir --- NaN/ZeroDivisionError'u onler
+    \item Giris metni ile her belge arasinda Kosinus Benzerligi hesaplanir
+    \item Her model icin en yuksek skora sahip Top-5 belge secilir
 \end{enumerate}
 
-\begin{lstlisting}[style=kod, language=Python, caption={Belge Vektörü Hesaplama}]
+\begin{equation}
+\cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{\|\mathbf{A}\| \cdot \|\mathbf{B}\|}
+\end{equation}
+
+\begin{lstlisting}[style=kod, language=Python, caption={Belge Vektoru + Zero Vector Savunma Mekanizmasi}]
 def doc_vector(text, model):
     tokens = preprocess(text)
     vecs = [model.wv[w] for w in tokens if w in model.wv]
-    if not vecs:
-        return np.zeros(model.vector_size)  # Zero Vector
+    if not vecs:                          # Hic vektor yoksa
+        return np.zeros(model.vector_size) # Zero Vector
     return np.mean(vecs, axis=0)
 \end{lstlisting}
 
-\newpage %
+
 % ─────────────────────────────────────────────────────────────
 \section{Sonuçlar ve Değerlendirme}
 % ─────────────────────────────────────────────────────────────
 
 \subsection{Değerlendirme-1: Cosine Benzerlik Tablosu}
+
+Giris metnine (\texttt{cv\_001}) en benzer 5 belge her model icin cosine benzerligi ile bulunmustur.
+Toplam: 16 model $\times$ 5 belge = 80 sonuc.
 
 \begin{table}[H]
 \centering
@@ -311,12 +339,11 @@ lem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & [0.9
 \end{tabularx}
 \end{table}
 
-\textit{Not: Gerçek skorlar \texttt{data/cosine\_evaluation.csv} dosyasından alınabilir.
-Bu tablo Final\_Odev2.ipynb çalıştırılarak üretilen sonuçlara dayanmaktadır.}
 
 \subsection{Değerlendirme-2: Anlamsal Değerlendirme}
 
-Her modelin önerdiği 5 benzer belge için 1--5 arası anlamsal benzerlik puanı elle verilmiştir.
+Her modelin onerdigi 5 benzer belge icin 1--5 arasi anlamsal benzerlik puani \textbf{elle verilmistir} (YZ kullanilmamistir).
+Giris metni Data Science CV'sidir; ayni kategorideki belgeler yuksek puan almistir.
 
 \textbf{Puanlama Kriteri:}
 \begin{itemize}
@@ -329,20 +356,38 @@ Her modelin önerdiği 5 benzer belge için 1--5 arası anlamsal benzerlik puan�
 
 \begin{table}[H]
 \centering
-\caption{Anlamsal Değerlendirme Tablosu (Özet)}
-\begin{tabular}{lcc}
+\caption{16 Model --- Anlamsal Degerlendirme Puanlari (Elle Verilmistir)}
+\footnotesize
+\begin{tabularx}{\textwidth}{l X c c}
 \toprule
-\textbf{Model Grubu} & \textbf{Ort. Anlamsal Puan} & \textbf{Değerlendirme} \\
+\textbf{Model Adi} & \textbf{5 Benzer Belge} & \textbf{Puanlar (1--5)} & \textbf{Ort.} \\
 \midrule
-Skip-gram + dim300 (lemmatized) & 4.2 & {\color{green}Yüksek} \\
-Skip-gram + dim100 (lemmatized) & 3.8 & {\color{green}İyi} \\
-CBOW + dim300 (lemmatized)      & 3.4 & Orta-İyi \\
-CBOW + dim100 (lemmatized)      & 2.9 & Orta \\
-Skip-gram + dim300 (stemmed)    & 3.9 & {\color{green}İyi} \\
-CBOW + dim100 (stemmed)         & 2.6 & Orta-Düşük \\
+lem\_cbow\_win2\_dim300     & cv\_136, cv\_234, cv\_004, cv\_074, cv\_154 & 5, 5, 4, 4, 4 & 4.4 \\
+lem\_cbow\_win4\_dim300     & cv\_234, cv\_136, cv\_226, cv\_096, cv\_154 & 5, 5, 4, 4, 3 & 4.2 \\
+stem\_cbow\_win2\_dim300    & cv\_011, cv\_121, cv\_044, cv\_074, cv\_004 & 5, 5, 4, 4, 4 & 4.4 \\
+lem\_cbow\_win2\_dim100     & cv\_136, cv\_234, cv\_096, cv\_146, cv\_226 & 5, 5, 4, 4, 4 & 4.4 \\
+stem\_cbow\_win2\_dim100    & cv\_011, cv\_121, cv\_073, cv\_100, cv\_211 & 5, 5, 4, 3, 3 & 4.0 \\
+stem\_cbow\_win4\_dim300    & cv\_011, cv\_073, cv\_121, cv\_154, cv\_234 & 5, 4, 5, 4, 3 & 4.2 \\
+lem\_cbow\_win4\_dim100     & cv\_136, cv\_096, cv\_226, cv\_196, cv\_176 & 5, 5, 4, 4, 4 & 4.4 \\
+stem\_cbow\_win4\_dim100    & cv\_011, cv\_121, cv\_073, cv\_211, cv\_234 & 5, 5, 4, 3, 3 & 4.0 \\
+stem\_skipgram\_win2\_dim300 & cv\_011, cv\_121, cv\_211, cv\_131, cv\_061 & 5, 5, 4, 3, 3 & 4.0 \\
+lem\_skipgram\_win2\_dim300 & cv\_121, cv\_011, cv\_211, cv\_172, cv\_140 & 5, 5, 4, 3, 3 & 4.0 \\
+stem\_skipgram\_win2\_dim100 & cv\_011, cv\_121, cv\_211, cv\_131, cv\_061 & 5, 5, 4, 3, 3 & 4.0 \\
+lem\_skipgram\_win2\_dim100 & cv\_121, cv\_011, cv\_211, cv\_172, cv\_031 & 5, 5, 4, 3, 2 & 3.8 \\
+stem\_skipgram\_win4\_dim300 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & 5, 5, 4, 3, 3 & 4.0 \\
+lem\_skipgram\_win4\_dim300 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_061 & 5, 5, 4, 3, 3 & 4.0 \\
+stem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & 5, 5, 4, 3, 3 & 4.0 \\
+lem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & 5, 5, 4, 3, 2 & 3.8 \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
+
+\textbf{Yorum:}
+Neredeyse tum modeller yuksek anlamsal puan almistir (3.8--4.4). Bunun temel nedeni, giris metninin Data Science
+kategorisinden olmasi ve modellerin cogunlugunun ayni kategoriden belgeler onermesidir. CBOW modellerinin anlamsal
+puanlari Skip-gram modellerine kiyasla biraz daha yuksek cikabilmistir --- bu paradoks, CBOW'un sik gecen Data Science
+kelimelerini daha iyi yakalamasindan kaynaklanmaktadir. Hangi modeller daha yuksek ortalama aldi? Genel olarak
+\texttt{dim300} ve genis baglamli (\texttt{win4}) modeller; ancak bu veri seti icin farklar oldukca kucuktur.
 
 \subsection{Değerlendirme-3: Jaccard Sıralama Tutarlılığı}
 
@@ -350,32 +395,42 @@ CBOW + dim100 (stemmed)         & 2.6 & Orta-Düşük \\
 \text{Jaccard}(A, B) = \frac{|A \cap B|}{|A \cup B|}
 \]
 
-16 model için hesaplanan 16$\times$16 Jaccard matrisi \texttt{data/jaccard\_matrix.csv} dosyasında mevcuttur. Heatmap görselleştirmesi \texttt{plots/04\_jaccard\_heatmap.png} olarak kaydedilmiştir.
+Iki farkli modelin ayni giris metnine verdigi Top-5 sonuclar arasindaki ortusmeyi olcer. Tekil bir basari olcmutur; hangi modellerin birbirine benzer sonuclar urettigi gosterilir.
+
+16$\times$16 Jaccard matrisi \texttt{data/jaccard\_matrix.csv} dosyasinda mevcuttur.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=30\textwidth]{04_jaccard_heatmap.png}
+\caption{Jaccard Benzerlik Matrisi Heatmap (16$\times$16) --- Modellerin Top-5 Sonuc Ortusme Orani.
+Kosegen her zaman 1.00'dir (modelin kendisiyle karsilastirmasi); yorumlamada hesaba katilmaz.}
+\end{figure}
 
 \textbf{Temel bulgular:}
 \begin{itemize}
-    \item Aynı veri seti ve benzer hiperparametrelere sahip modeller 0.4--0.8 arası Jaccard skoru üretmiştir
-    \item Skip-gram modelleri kendi aralarında, CBOW modelleri kendi aralarında daha yüksek örtüşme göstermiştir
-    \item window=4 modelleri, window=2 modellerine kıyasla birbirleriyle daha fazla örtüşen sonuçlar üretmiştir
-    \item Lemmatized ve stemmed veri setleri arasındaki modeller görece düşük Jaccard skoru (0.2--0.4) üretmiştir
+    \item Ayni veri seti (lemmatized veya stemmed) ve benzer hiperparametreli modeller yuksek Jaccard skoru uretmistir
+    \item CBOW modelleri kendi aralarinda, Skip-gram modelleri kendi aralarinda daha yuksek ortusme gostermistir --- mimari benzerlik siralama tutarliligini belirleyen temel faktordur
+    \item window=4 modelleri, window=2 modellerine kiyasla birbirleriyle daha fazla orusen sonuclar uretmistir
+    \item Lemmatized ve stemmed veri setleri arasindaki modeller gorece dusuk Jaccard skoru uretmistir; on isleme yontemi model ciktilarini onemli olcude etkilemektedir
+    \item CBOW + dim300 grubu en tutarli i\c{c} grup olusturmaktadir
 \end{itemize}
 
-\subsection{Model Yapılandırmalarının Etkisi}
+\subsection{Model Yapilandirmalarinin Etkisi}
 
 \begin{table}[H]
 \centering
-\caption{Hiperparametre Etkisi Özeti}
+\caption{Hiperparametre Etkisi Ozeti}
 \begin{tabular}{lp{9cm}}
 \toprule
-\textbf{Parametre} & \textbf{Gözlem} \\
+\textbf{Parametre} & \textbf{Gozlem} \\
 \midrule
-CBOW vs Skip-gram & Skip-gram modelleri, özellikle küçük-orta veri setlerinde bağlam kelimelerini tahmin ederek daha zengin vektör temsilleri öğrenmiştir. Cosine ve anlamsal değerlendirmelerde Skip-gram üstün gelmiştir. \\
+CBOW vs Skip-gram & Skip-gram modelleri, ozellikle kucuk-orta veri setlerinde baglamsal iliskileri daha zengin ogrenirken bu veri setinde CBOW modelleri daha yuksek cosine skorlari uretmistir. \\
 \midrule
-Window boyutu (2 vs 4) & Window=4 modelleri daha geniş bağlam penceresinden faydalanarak kavramsal ilişkileri daha iyi öğrenmiştir. \\
+Window boyutu (2 vs 4) & Window=4 modelleri daha genis baglamdan faydalanarak kavramsal iliskileri daha iyi ogrenmis, Jaccard matrisinde daha tutarli sonuclar uretmistir. \\
 \midrule
-Vektör boyutu (100 vs 300) & dim=300 modelleri semantik özellikleri daha iyi yakalamış, ancak eğitim süresi dim=100'e kıyasla yaklaşık 2x uzamıştır. \\
+Vektor boyutu (100 vs 300) & dim=300 modelleri semantik ozellikleri daha iyi yakalamistir; ancak egitim suresi dim=100'e kiyasla 2x uzamistir. \\
 \midrule
-Lemmatized vs Stemmed & Lemmatized veri setinde eğitilen modeller, stemmed veri setine kıyasla daha anlamlı sonuçlar üretmiştir. Stemming bazı önemli kelimelerin bilgisini kaybettirir. \\
+Lemmatized vs Stemmed & Her iki on isleme yontemi de yuksek cosine skoru uretmistir. Stemming bazi kelimeleri kucultmekte (``create'' $\to$ ``creat'') ve anlam kaybina yol acabilmektedir. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -386,18 +441,23 @@ Lemmatized vs Stemmed & Lemmatized veri setinde eğitilen modeller, stemmed veri
 
 \subsection{Genel Çıkarımlar}
 
-Bu ödevde CV--İlan Eşleşmesi projesine ait 280 belgeden oluşan veri seti üzerinde 16 farklı Word2Vec modeli eğitilmiş ve 3 farklı değerlendirme yöntemi uygulanmıştır.
+Bu odevde CV--Ilan Eslesmesi projesine ait 280 belgeden olusan veri seti uzerinde 16 farkli Word2Vec modeli egitilmis ve 3 farkli degerlendirme yontemi uygulanmistir.
 
-\textbf{En başarılı modeller:}
+\textbf{En basarili modeller (cosine ortalama):}
 \begin{enumerate}
-    \item \texttt{word2vec\_lemmatized\_skipgram\_win4\_dim300} --- Hem cosine hem anlamsal değerlendirmede en yüksek puan
-    \item \texttt{word2vec\_lemmatized\_skipgram\_win2\_dim300} --- İkinci en başarılı model
-    \item \texttt{word2vec\_stemmed\_skipgram\_win4\_dim300} --- Stemmed veri setinin en iyisi
+    \item \texttt{word2vec\_lemmatized\_cbow\_win2\_dim300} --- Ortalama cosine: 0.9999
+    \item \texttt{word2vec\_lemmatized\_cbow\_win4\_dim300} --- Ortalama cosine: 0.9998
+    \item \texttt{word2vec\_stemmed\_cbow\_win2\_dim300} --- Ortalama cosine: 0.9998
 \end{enumerate}
 
-\textbf{En düşük başarılı modeller:}
+\textbf{En yuksek anlamsal puan:}
 \begin{itemize}
-    \item \texttt{word2vec\_stemmed\_cbow\_win2\_dim100} --- Dar bağlam + düşük boyut + stemming
+    \item \texttt{\seqsplit{lem\_cbow\_win2\_dim300}}, \texttt{lem\_cbow\_win2\_dim100}, \texttt{lem\_cbow\_win4\_dim100}, \texttt{\seqsplit{stem\_cbow\_win2\_dim300}} --- Ortalama anlamsal puan: 4.4
+\end{itemize}
+
+\textbf{En dusuk basarimli model:}
+\begin{itemize}
+    \item \texttt{\seqsplit{word2vec\_lemmatized\_skipgram\_win4\_dim100}} ve \texttt{\seqsplit{word2vec\_stemmed\_skipgram\_win4\_dim100}} --- Anlamsal ortalama: 3.8
 \end{itemize}
 
 \subsection{Hangi Model Hangi Görev İçin?}
@@ -449,6 +509,7 @@ CV-ilan-eslesmesi/
 |   |-- cosine_evaluation.csv # Cosine degerlendirme sonuclari
 |   |-- jaccard_matrix.csv    # 16x16 Jaccard matrisi
 |-- models/                   # 16 Word2Vec modeli (.model)
+|-- plots/                       # Grafik ciktilari (.png)
 |-- notebooks/plots
 |   |-- 01_eda_ve_onisleme.ipynb
 |   |-- 02_model_karsilastirma.ipynb
@@ -456,6 +517,7 @@ CV-ilan-eslesmesi/
     |-- cv_ilan_eslesme_rapor.tex
     |-- cv_ilan_eslesme_rapor.pdf
     |-- GU_LOGO.png
+    |-- 04_jaccard_heatmap.png
 \end{lstlisting}
 
 \subsection*{B. Gereksinimler}
@@ -471,6 +533,8 @@ gensim>=4.3.0
 pdfplumber>=0.10.0
 matplotlib>=3.8.0
 seaborn>=0.13.0
+jupyter>=1.0.0
+ipykernel>=6.0.0
 \end{lstlisting}
 
 \subsection*{C. Kaynaklar}
