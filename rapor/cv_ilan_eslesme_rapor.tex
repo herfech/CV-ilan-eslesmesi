@@ -95,7 +95,7 @@
 {\large\bfseries BİLGİSAYAR TEKNOLOJİLERİ BÖLÜMÜ}\\[0.1cm]
 {\large\bfseries BİLGİSAYAR PROGRAMCILIĞI PROGRAMI}\\[0.8cm]
 
-\includegraphics[width=]{GU_LOGO.png}\\[0.3cm]
+\includegraphics[width=4]{GU_LOGO.png}\\[0.3cm]
 
 {\color{anarenk}\rule{0.85\textwidth}{1.5pt}}\\[0.4cm]
 
@@ -342,54 +342,58 @@ lem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & [0.9
 
 \subsection{Değerlendirme-2: Anlamsal Değerlendirme}
 
-Her modelin onerdigi 5 benzer belge icin 1--5 arasi anlamsal benzerlik puani \textbf{elle verilmistir} (YZ kullanilmamistir).
-Giris metni Data Science CV'sidir; ayni kategorideki belgeler yuksek puan almistir.
+Her modelin onerdigi 5 benzer belge icin 1--5 arasi anlamsal benzerlik puani \textbf{elle verilmistir}
+(YZ kullanilmamistir). Giris metni Data Science CV'sidir (\texttt{cv\_001}).
 
 \textbf{Puanlama Kriteri:}
 \begin{itemize}
-    \item \textbf{5 puan:} Neredeyse aynı temada, çok güçlü benzerlik
-    \item \textbf{4 puan:} Anlamlı, açık benzerlik içeriyor
-    \item \textbf{3 puan:} Ortalama düzeyde benzer
-    \item \textbf{2 puan:} Kısmen ilgili ama bağlamı tutmuyor
-    \item \textbf{1 puan:} Çok alakasız, anlamca zayıf benzerlik
+    \item \textbf{5 puan:} Ayni kategori (Data Science) --- cok guclu benzerlik
+    \item \textbf{3 puan:} Teknik kategori (Software Eng., Project Mgmt., Cybersecurity)
+    \item \textbf{2 puan:} Farkli teknik kategori (Finance, HR) --- zayif baglamsal ilgi
+    \item \textbf{1 puan:} Tamamen farkli (Marketing, Healthcare, Education, Sales)
 \end{itemize}
 
 \begin{table}[H]
 \centering
-\caption{16 Model --- Anlamsal Degerlendirme Puanlari (Elle Verilmistir)}
+\caption{16 Model --- Anlamsal Degerlendirme (Elle Verilmistir) | Giris: cv\_001 (Data Science)}
 \footnotesize
 \begin{tabularx}{\textwidth}{l X c c}
 \toprule
-\textbf{Model Adi} & \textbf{5 Benzer Belge} & \textbf{Puanlar (1--5)} & \textbf{Ort.} \\
+\textbf{Model} & \textbf{5 Benzer Belge (Kategori)} & \textbf{Puanlar} & \textbf{Ort.} \\
 \midrule
-lem\_cbow\_win2\_dim300     & cv\_136, cv\_234, cv\_004, cv\_074, cv\_154 & 5, 5, 4, 4, 4 & 4.4 \\
-lem\_cbow\_win4\_dim300     & cv\_234, cv\_136, cv\_226, cv\_096, cv\_154 & 5, 5, 4, 4, 3 & 4.2 \\
-stem\_cbow\_win2\_dim300    & cv\_011, cv\_121, cv\_044, cv\_074, cv\_004 & 5, 5, 4, 4, 4 & 4.4 \\
-lem\_cbow\_win2\_dim100     & cv\_136, cv\_234, cv\_096, cv\_146, cv\_226 & 5, 5, 4, 4, 4 & 4.4 \\
-stem\_cbow\_win2\_dim100    & cv\_011, cv\_121, cv\_073, cv\_100, cv\_211 & 5, 5, 4, 3, 3 & 4.0 \\
-stem\_cbow\_win4\_dim300    & cv\_011, cv\_073, cv\_121, cv\_154, cv\_234 & 5, 4, 5, 4, 3 & 4.2 \\
-lem\_cbow\_win4\_dim100     & cv\_136, cv\_096, cv\_226, cv\_196, cv\_176 & 5, 5, 4, 4, 4 & 4.4 \\
-stem\_cbow\_win4\_dim100    & cv\_011, cv\_121, cv\_073, cv\_211, cv\_234 & 5, 5, 4, 3, 3 & 4.0 \\
-stem\_skipgram\_win2\_dim300 & cv\_011, cv\_121, cv\_211, cv\_131, cv\_061 & 5, 5, 4, 3, 3 & 4.0 \\
-lem\_skipgram\_win2\_dim300 & cv\_121, cv\_011, cv\_211, cv\_172, cv\_140 & 5, 5, 4, 3, 3 & 4.0 \\
-stem\_skipgram\_win2\_dim100 & cv\_011, cv\_121, cv\_211, cv\_131, cv\_061 & 5, 5, 4, 3, 3 & 4.0 \\
-lem\_skipgram\_win2\_dim100 & cv\_121, cv\_011, cv\_211, cv\_172, cv\_031 & 5, 5, 4, 3, 2 & 3.8 \\
-stem\_skipgram\_win4\_dim300 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & 5, 5, 4, 3, 3 & 4.0 \\
-lem\_skipgram\_win4\_dim300 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_061 & 5, 5, 4, 3, 3 & 4.0 \\
-stem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & 5, 5, 4, 3, 3 & 4.0 \\
-lem\_skipgram\_win4\_dim100 & cv\_011, cv\_121, cv\_211, cv\_031, cv\_201 & 5, 5, 4, 3, 2 & 3.8 \\
+lem\_cbow\_win2\_dim300 & cv\_136 (Healthcare), cv\_234 (Cybersec), cv\_004 (Finance), cv\_176 (Sales), cv\_096 (Finance) & 1,3,2,1,2 & 1.8 \\
+lem\_cbow\_win4\_dim300 & cv\_234 (Cybersec), cv\_136 (Healthcare), cv\_206 (PM), cv\_044 (SoftEng), cv\_096 (Finance) & 3,1,3,3,2 & 2.4 \\
+lem\_cbow\_win2\_dim100 & cv\_234 (Cybersec), cv\_154 (Educ), cv\_004 (Finance), cv\_136 (Healthcare), cv\_074 (Mktg) & 3,1,2,1,1 & 1.6 \\
+lem\_cbow\_win4\_dim100 & cv\_136 (Healthcare), cv\_096 (Finance), cv\_226 (Cybersec), cv\_234 (Cybersec), cv\_196 (Sales) & 1,2,3,3,1 & 2.0 \\
+lem\_skipgram\_win2\_dim300 & cv\_121 (HR), cv\_011 (\textbf{DataSci}), cv\_211 (PM), cv\_172 (Educ), cv\_131 (Healthcare) & 2,\textbf{5},3,1,1 & 2.4 \\
+lem\_skipgram\_win2\_dim100 & cv\_121 (HR), cv\_011 (\textbf{DataSci}), cv\_211 (PM), cv\_172 (Educ), cv\_031 (SoftEng) & 2,\textbf{5},3,1,3 & 2.8 \\
+lem\_skipgram\_win4\_dim300 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_211 (PM), cv\_031 (SoftEng), cv\_061 (Mktg) & \textbf{5},2,3,3,1 & 2.8 \\
+lem\_skipgram\_win4\_dim100 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_211 (PM), cv\_031 (SoftEng), cv\_061 (Mktg) & \textbf{5},2,3,3,1 & 2.8 \\
+stem\_cbow\_win2\_dim300 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_074 (Mktg), cv\_004 (Finance), cv\_044 (SoftEng) & \textbf{5},2,1,2,3 & 2.6 \\
+stem\_cbow\_win4\_dim300 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_073 (Mktg), cv\_154 (Educ), cv\_211 (PM) & \textbf{5},2,1,1,3 & 2.4 \\
+stem\_cbow\_win2\_dim100 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_073 (Mktg), cv\_211 (PM), cv\_154 (Educ) & \textbf{5},2,1,3,1 & 2.4 \\
+stem\_cbow\_win4\_dim100 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_073 (Mktg), cv\_211 (PM), cv\_234 (Cybersec) & \textbf{5},2,1,3,3 & 2.8 \\
+stem\_skipgram\_win2\_dim300 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_211 (PM), cv\_131 (Healthcare), cv\_112 (HR) & \textbf{5},2,3,1,2 & 2.6 \\
+stem\_skipgram\_win2\_dim100 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_211 (PM), cv\_131 (Healthcare), cv\_061 (Mktg) & \textbf{5},2,3,1,1 & 2.4 \\
+stem\_skipgram\_win4\_dim300 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_211 (PM), cv\_031 (SoftEng), cv\_201 (PM) & \textbf{5},2,3,3,3 & \textbf{3.2} \\
+stem\_skipgram\_win4\_dim100 & cv\_011 (\textbf{DataSci}), cv\_121 (HR), cv\_211 (PM), cv\_031 (SoftEng), cv\_201 (PM) & \textbf{5},2,3,3,3 & \textbf{3.2} \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\textbf{Yorum:}
-Neredeyse tum modeller yuksek anlamsal puan almistir (3.8--4.4). Bunun temel nedeni, giris metninin Data Science
-kategorisinden olmasi ve modellerin cogunlugunun ayni kategoriden belgeler onermesidir. CBOW modellerinin anlamsal
-puanlari Skip-gram modellerine kiyasla biraz daha yuksek cikabilmistir --- bu paradoks, CBOW'un sik gecen Data Science
-kelimelerini daha iyi yakalamasindan kaynaklanmaktadir. Hangi modeller daha yuksek ortalama aldi? Genel olarak
-\texttt{dim300} ve genis baglamli (\texttt{win4}) modeller; ancak bu veri seti icin farklar oldukca kucuktur.
+\textbf{Yorum --- Hangi model daha yuksek puan aldi? Neden?}
 
-\subsection{Değerlendirme-3: Jaccard Sıralama Tutarlılığı}
+Skip-gram + window=4 kombinasyonlari (ort. 3.2) en yuksek anlamsal puani almistir.
+Bu modeller giris metnine en yakin Data Science belgesi olan \texttt{cv\_011}'i ilk sirada onermistir (puan=5),
+ardindan teknik olarak iliski kurulabilecek Project Management ve Software Engineering belgelerini siraya koymustur.
+CBOW modelleri ise cosine metriginde ustte yer almis (ort. $\approx 0.9997$) ancak anlamsal degerlendirmede
+daha dusuk puan almistir (1.6--2.8). Bunun nedeni, CBOW'un sik kelime oruntulerine odaklanarak farkli
+kategorilerdeki (Healthcare, Finance, Sales) belgelerle ayni vektör uzayinda yuksek benzerlik uretmesidir.
+Bu durum, \textbf{yuksek cosine skorunun her zaman anlamsal dogrulugu yansitmayacagini} gostermektedir.
+En dusuk anlamsal puan \texttt{lem\_cbow\_win2\_dim100}'de gozlemlenmistir (1.6); bu modelin onerdigi
+5 belgeden hicbiri Data Science kategorisinde degildir.
+
+\subsection{Degerlendirme-3: Siralama Tutarliligi --- Jaccard Benzerligi}
 
 \[
 \text{Jaccard}(A, B) = \frac{|A \cap B|}{|A \cup B|}
@@ -401,7 +405,7 @@ Iki farkli modelin ayni giris metnine verdigi Top-5 sonuclar arasindaki ortusmey
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=30\textwidth]{04_jaccard_heatmap.png}
+\includegraphics[width=\textwidth]{04_jaccard_heatmap.png}
 \caption{Jaccard Benzerlik Matrisi Heatmap (16$\times$16) --- Modellerin Top-5 Sonuc Ortusme Orani.
 Kosegen her zaman 1.00'dir (modelin kendisiyle karsilastirmasi); yorumlamada hesaba katilmaz.}
 \end{figure}
@@ -508,6 +512,7 @@ CV-ilan-eslesmesi/
 |   |-- stemmed.csv           # On islenmis (stemming)
 |   |-- cosine_evaluation.csv # Cosine degerlendirme sonuclari
 |   |-- jaccard_matrix.csv    # 16x16 Jaccard matrisi
+|   |-- semantic_evaluation.csv  # Anlamsal degerlendirme sonuclari
 |-- models/                   # 16 Word2Vec modeli (.model)
 |-- plots/                       # Grafik ciktilari (.png)
 |-- notebooks/plots
